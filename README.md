@@ -6,3 +6,9 @@ Rquire
 * Delete course
 * Register
 * Exit
+
+Todo
+* Database -
+* Entities -
+* Functional -
+* User Interface - 
