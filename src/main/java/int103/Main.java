@@ -25,11 +25,38 @@ public class Main {
                 String course_id = resultSet.getString("student_id");
                 System.out.println("registration ID: " + regis_id + ", student_ID: " + student_id + ", course_id" + course_id);
             }
-
-            System.out.println("Connected to the database successfully!");
-
+            System.out.println("Connected successfully");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("cant connected regis table" + e.getMessage());
+        }
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+             Statement statement = connection.createStatement();
+             ResultSet students = statement.executeQuery("SELECT student_id, first_name, last_name, email FROM students")){
+
+            while (students.next()) {
+                Long student_id = students.getLong("student_id");
+                String first_name = students.getString("first_name");
+                String last_name = students.getString("last_name");
+                String email = students.getString("email");
+                System.out.println("student id :" + student_id + "first_name :" + first_name + ", last_name :" + last_name + ", email :" + email);
+            }
+            System.out.println("connected successfully");
+        } catch (SQLException e) {
+            System.out.println("cant connected student table " + e.getMessage());
+        }
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement statement = connection.createStatement();
+        ResultSet courses = statement.executeQuery("SELECT course_id, course_name FROM courses")){
+            while (courses.next()){
+                String course_id = courses.getString("course_id");
+                String course_name = courses.getString("course_name");
+                System.out.println("course id :" + course_id + ", course name :" + course_name);
+            }
+            System.out.println("connected successfully");
+        } catch (SQLException e) {
+            System.out.println("cant connected course table " + e.getMessage());
         }
     }
-    }
+}
