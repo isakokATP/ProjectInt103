@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
+    <list default="true" id="f38f8bf0-03ac-4215-b1c5-c467353f9f74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Students.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Students.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,79 +25,68 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="connectDB" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+    &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MheeKhawDum&quot;
+    }
+    }</component>
+  <component name="GithubPullRequestsUISettings">{
+    &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/isakokATP/ProjectInt103.git&quot;,
+    &quot;accountId&quot;: &quot;bfc991e0-5159-4bcd-badb-d13b76db6295&quot;
+    }
+    }</component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2hJd3JDFimE1YG2vMqM6qclJ8ZJ" />
+    &quot;associatedIndex&quot;: 2
+    }</component>
+  <component name="ProjectId" id="2hJar45mvqLghiJf4OIkdUTEfTR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "repository",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103\src\main\java\int103\Connector" />
-      <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ProjectInt103" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ProjectInt103" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="PropertiesComponent">{
+    &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Chaiy0&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/chaiyo/ProjectInt103&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    }
+    }</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="" />
-      <created>1717315913644</created>
+      <changelist id="f38f8bf0-03ac-4215-b1c5-c467353f9f74" name="Changes" comment="" />
+      <created>1717314831842</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1717315913644</updated>
-      <workItem from="1717315915128" duration="1312000" />
-      <workItem from="1717318122029" duration="1536000" />
-      <workItem from="1717319678339" duration="4525000" />
-      <workItem from="1717326082670" duration="851000" />
-      <workItem from="1717398688642" duration="421000" />
-      <workItem from="1717399240425" duration="1017000" />
-      <workItem from="1717400344063" duration="14000" />
-      <workItem from="1717400462134" duration="3417000" />
+      <updated>1717314831842</updated>
+      <workItem from="1717314832984" duration="1079000" />
+      <workItem from="1717320954153" duration="12555000" />
     </task>
     <servers />
   </component>

@@ -1,58 +1,80 @@
 package int103.Connector;
 
+import int103.Entities.Course;
+import int103.Entities.Register;
+import int103.Entities.Students;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConnectionDB {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        // Database URL
-        String jdbcUrl = "jdbc:mysql://localhost:3306/int103";
-        // Database credentials
-        String username = "root";
-        String password = "Kira5005.";
 
-        // Using try-with-resources to ensure resources are closed
-        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/int103";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Kira5005.";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+    }
+
+    public static List<Register> getRegistrations() {
+        List<Register> registrations = new ArrayList<>();
+        String query = "SELECT registration_id, student_id, course_id FROM registration";
+        try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT registration_id, student_id, course_id FROM registration")) {
+             ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                int regis_id = resultSet.getInt("registration_id");
-                String student_id = resultSet.getString("student_id");
-                String course_id = resultSet.getString("student_id");
-                System.out.println("registration ID: " + regis_id + ", student_ID: " + student_id + ", course_id" + course_id);
+                int regisId = resultSet.getInt("registration_id");
+                Long studentId = resultSet.getLong("student_id");
+                String courseId = resultSet.getString("course_id");
+                registrations.add(new Register(regisId, studentId, courseId));
             }
-            System.out.println("Connected successfully");
+            System.out.println("Connected successfully to the registration table.");
         } catch (SQLException e) {
-            System.out.println("cant connected regis table" + e.getMessage());
+            System.out.println("Can't connect to registration table: " + e.getMessage());
         }
+        return registrations;
+    }
 
-        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+    public static List<Students> getStudents() {
+        List<Students> students = new ArrayList<>();
+        String query = "SELECT student_id, first_name, last_name, email FROM students";
+        try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
-             ResultSet students = statement.executeQuery("SELECT student_id, first_name, last_name, email FROM students")){
+             ResultSet resultSet = statement.executeQuery(query)) {
 
-            while (students.next()) {
-                Long student_id = students.getLong("student_id");
-                String first_name = students.getString("first_name");
-                String last_name = students.getString("last_name");
-                String email = students.getString("email");
-                System.out.println("student id :" + student_id + "first_name :" + first_name + ", last_name :" + last_name + ", email :" + email);
+            while (resultSet.next()) {
+                long studentId = resultSet.getLong("student_id");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String email = resultSet.getString("email");
+                students.add(new Students(studentId, firstName, lastName, email));
             }
-            System.out.println("connected successfully");
+            System.out.println("Connected successfully to the student table.");
         } catch (SQLException e) {
-            System.out.println("cant connected student table " + e.getMessage());
+            System.out.println("Can't connect to student table: " + e.getMessage());
         }
+        return students;
+    }
 
-        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+    public static List<Course> getCourses() {
+        List<Course> courses = new ArrayList<>();
+        String query = "SELECT course_id, course_name FROM courses";
+        try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
-             ResultSet courses = statement.executeQuery("SELECT course_id, course_name FROM courses")){
-            while (courses.next()){
-                String course_id = courses.getString("course_id");
-                String course_name = courses.getString("course_name");
-                System.out.println("course id :" + course_id + ", course name :" + course_name);
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String courseId = resultSet.getString("course_id");
+                String courseName = resultSet.getString("course_name");
+                courses.add(new Course(courseId, courseName));
             }
-            System.out.println("connected successfully");
+            System.out.println("Connected successfully to the course table.");
         } catch (SQLException e) {
-            System.out.println("cant connected course table " + e.getMessage());
+            System.out.println("Can't connect to course table: " + e.getMessage());
         }
+        return courses;
     }
 }
