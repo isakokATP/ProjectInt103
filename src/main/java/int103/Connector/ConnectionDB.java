@@ -27,7 +27,7 @@ public class ConnectionDB {
 
             while (resultSet.next()) {
                 int regisId = resultSet.getInt("registration_id");
-                String studentId = resultSet.getString("student_id");
+                Long studentId = resultSet.getLong("student_id");
                 String courseId = resultSet.getString("course_id");
                 registrations.add(new Register(regisId, studentId, courseId));
             }
