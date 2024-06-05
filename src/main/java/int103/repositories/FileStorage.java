@@ -13,7 +13,7 @@ public class FileStorage implements StorageStrategy {
     private static final String REGISTRATIONS_FILE = "registrations.dat";
 
     private Map<Long, Student> students = new HashMap<>();
-    private Map<String, Course> courses = new HashMap<>();
+    private Map<String, String> courses = new HashMap<>();
     private Map<Long, Set<String>> studentCourses = new HashMap<>();
     private Map<String, Set<Long>> courseStudents = new HashMap<>();
 
@@ -26,7 +26,7 @@ public class FileStorage implements StorageStrategy {
         if (courses.containsKey(courseId)) {
             throw new CustomException("Course ID already exists.");
         }
-        courses.put(courseId, new Course(courseId, courseName));
+        courses.put(courseId, courseName);
         save();
     }
 
@@ -50,7 +50,11 @@ public class FileStorage implements StorageStrategy {
 
     @Override
     public List<Course> getAllCourses() throws CustomException {
-        return new ArrayList<>(courses.values());
+        List<Course> courseList = new ArrayList<>();
+        for (Map.Entry<String, String> entry : courses.entrySet()) {
+            courseList.add(new Course(entry.getKey(), entry.getValue()));
+        }
+        return courseList;
     }
 
     @Override
@@ -59,7 +63,7 @@ public class FileStorage implements StorageStrategy {
             throw new CustomException("Student not found.");
         }
         return studentCourses.getOrDefault(studentId, Collections.emptySet()).stream()
-                .map(courses::get)
+                .map(courseId -> new Course(courseId, courses.get(courseId)))
                 .toList();
     }
 
@@ -102,7 +106,7 @@ public class FileStorage implements StorageStrategy {
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(COURSES_FILE))) {
-            courses = (Map<String, Course>) ois.readObject();
+            courses = (Map<String, String>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             // File not found or not readable, starting fresh
         }

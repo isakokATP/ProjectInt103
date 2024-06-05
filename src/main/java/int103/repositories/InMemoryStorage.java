@@ -8,7 +8,7 @@ import java.util.*;
 
 public class InMemoryStorage implements StorageStrategy {
     private final Map<Long, Student> students = new HashMap<>();
-    private final Map<String, Course> courses = new HashMap<>();
+    private final Map<String, String> courses = new HashMap<>();
     private final Map<Long, Set<String>> studentCourses = new HashMap<>();
     private final Map<String, Set<Long>> courseStudents = new HashMap<>();
 
@@ -17,7 +17,7 @@ public class InMemoryStorage implements StorageStrategy {
         if (courses.containsKey(courseId)) {
             throw new CustomException("Course ID already exists.");
         }
-        courses.put(courseId, new Course(courseId, courseName));
+        courses.put(courseId, courseName);
     }
 
     @Override
@@ -39,7 +39,11 @@ public class InMemoryStorage implements StorageStrategy {
 
     @Override
     public List<Course> getAllCourses() throws CustomException {
-        return new ArrayList<>(courses.values());
+        List<Course> courseList = new ArrayList<>();
+        for (Map.Entry<String, String> entry : courses.entrySet()) {
+            courseList.add(new Course(entry.getKey(), entry.getValue()));
+        }
+        return courseList;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class InMemoryStorage implements StorageStrategy {
             throw new CustomException("Student not found.");
         }
         return studentCourses.getOrDefault(studentId, Collections.emptySet()).stream()
-                .map(courses::get)
+                .map(courseId -> new Course(courseId, courses.get(courseId)))
                 .toList();
     }
 
@@ -62,4 +66,3 @@ public class InMemoryStorage implements StorageStrategy {
                 .toList();
     }
 }
-

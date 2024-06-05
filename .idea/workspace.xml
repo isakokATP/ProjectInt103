@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/RegistrationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/FileStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/InMemoryStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/StorageStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/RegistrationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/StudentManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/connector/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Students.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/registrations.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/FileStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/FileStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/InMemoryStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/InMemoryStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/students.dat" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +63,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
