@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="connectDB" />
+        <entry key="$PROJECT_DIR$" value="repository" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "repository",
+    "git-widget-placeholder": "add",
     "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,7 +101,8 @@
       <workItem from="1717398688642" duration="421000" />
       <workItem from="1717399240425" duration="1017000" />
       <workItem from="1717400344063" duration="14000" />
-      <workItem from="1717400462134" duration="3417000" />
+      <workItem from="1717400462134" duration="4236000" />
+      <workItem from="1717569831658" duration="13627000" />
     </task>
     <servers />
   </component>
