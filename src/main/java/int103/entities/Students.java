@@ -1,40 +1,40 @@
 package int103.entities;
 
 public class Students {
-    private Long studentId;
-    private String first_name;
-    private String last_name;
+    private long studentId;
+    private String firstName;
+    private String lastName;
     private String email;
 
-    public Students(Long studentId, String first_name, String last_name, String email) {
+    public Students(long studentId, String firstName, String lastName, String email) {
         this.studentId = studentId;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
     }
 
-    public Long getStudentId() {
+    public long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(long studentId) {
         this.studentId = studentId;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -47,11 +47,7 @@ public class Students {
 
     @Override
     public String toString() {
-        return "BaseRepository{" +
-                "studentId=" + studentId +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Student [studentId=" + studentId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
     }
 }
+

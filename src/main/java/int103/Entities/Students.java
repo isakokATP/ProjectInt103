@@ -1,4 +1,4 @@
-package int103.Entities;
+package int103.entities;
 
 public class Students {
     private long studentId;
