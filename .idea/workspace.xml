@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listStudent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/doSomething.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Students.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Students.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,16 +41,18 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2hJd3JDFimE1YG2vMqM6qclJ8ZJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "add",
+    "git-widget-placeholder": "#3 on Chaiy0",
     "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

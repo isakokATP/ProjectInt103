@@ -13,7 +13,7 @@ public class deleteCourse {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void delete(){
-        System.out.print("Enter your courseId to delete: ");
+        System.out.print("Enter your registrationID to delete: ");
         String deleteCourse = scanner.next();
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);

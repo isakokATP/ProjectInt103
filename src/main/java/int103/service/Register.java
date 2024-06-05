@@ -19,20 +19,20 @@ public class Register {
         System.out.print("Enter your CourseId : ");
         String courseID = scanner.next();
 
-        try(Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO registration VALUES (?, ?)")){
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO registration (student_id, course_Id) VALUES (?, ?)")) {
 
             statement.setLong(1, stdId);
-            statement.setString(1, courseID);
+            statement.setString(2, courseID);
 
             int rowAdded = statement.executeUpdate();
-            if (rowAdded > 0){
-                System.out.println("Welcome");
+            if (rowAdded > 0) {
+                System.out.println("Success");
             } else {
                 System.out.println("Can't Register");
             }
-        } catch (SQLException e){
-            System.out.println("Something went wrong" + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
         }
     }
 }
