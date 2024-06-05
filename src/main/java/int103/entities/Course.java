@@ -9,19 +9,19 @@ public class Course {
         this.courseName = courseName.toString();
     }
 
-    public String getCourse_id() {
+    public String getCourseId() {
         return courseId;
     }
 
-    public void setCourse_id(String courseId) {
+    public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 
-    public String getCourse_name() {
+    public String getCourseName() {
         return courseName;
     }
 
-    public void setCourse_name(String courseName) {
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
