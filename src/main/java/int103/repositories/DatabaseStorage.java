@@ -23,7 +23,7 @@ public class DatabaseStorage implements StorageStrategy {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 students.add(new Student(
-                        rs.getInt("student_id"),
+                        rs.getLong("student_id"),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
                         rs.getString("email")

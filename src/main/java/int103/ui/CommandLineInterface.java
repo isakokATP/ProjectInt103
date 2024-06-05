@@ -81,7 +81,7 @@ public class CommandLineInterface {
 
     private void viewAllCourses() throws CustomException {
         for (Course course : storage.getAllCourses()) {
-            System.out.println(course);
+            System.out.println(course.getId() + " : " + course.getName());
         }
     }
 
