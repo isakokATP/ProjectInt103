@@ -1,4 +1,4 @@
-package int103.Entities;
+package int103.entities;
 
 public class Register {
     private int registrationId;

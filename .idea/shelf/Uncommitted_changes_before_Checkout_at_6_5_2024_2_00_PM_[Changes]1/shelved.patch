@@ -1,0 +1,13 @@
+Index: src/main/java/int103/Repository/BaseRepository.java
+===================================================================
+diff --git a/src/main/java/int103/Repository/BaseRepository.java b/src/main/java/int103/repositories/BaseRepository.java
+rename from src/main/java/int103/Repository/BaseRepository.java
+rename to src/main/java/int103/repositories/BaseRepository.java
+--- a/src/main/java/int103/Repository/BaseRepository.java	
++++ b/src/main/java/int103/repositories/BaseRepository.java	
+@@ -1,4 +1,4 @@
+-package int103.Repository;
++package int103.repositories;
+ 
+ public class BaseRepository {
+ 
