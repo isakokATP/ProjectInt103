@@ -2,14 +2,14 @@ package int103.entities;
 
 public class Students {
     private Long studentId;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
 
-    public Students(Long studentId, String first_name, String last_name, String email) {
+    public Students(Long studentId, String firstName, String lastName, String email) {
         this.studentId = studentId;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
     }
 
@@ -22,19 +22,19 @@ public class Students {
     }
 
     public String getFirst_name() {
-        return first_name;
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirst_name(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLast_name(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -49,8 +49,8 @@ public class Students {
     public String toString() {
         return "BaseRepository{" +
                 "studentId=" + studentId +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

@@ -1,46 +1,46 @@
 package int103.entities;
 
 public class Register {
-    private int registration_id;
-    private Long student_id;
-    private String course_id;
+    private int registrationId;
+    private Long studentId;
+    private String courseId;
 
-    public Register(int registration_id, Long student_id, String course_id) {
-        this.registration_id = registration_id;
-        this.student_id = student_id;
-        this.course_id = course_id;
+    public Register(int registrationId, Long studentId, String courseId) {
+        this.registrationId = registrationId;
+        this.studentId = studentId;
+        this.courseId = courseId;
     }
 
-    public int getRegistration_id() {
-        return registration_id;
+    public int getRegistrationId() {
+        return registrationId;
     }
 
-    public void setRegistration_id(int registration_id) {
-        this.registration_id = registration_id;
+    public void setRegistrationId(int registrationId) {
+        this.registrationId = registrationId;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
-    public String getCourse_id() {
-        return course_id;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(String course_id) {
-        this.course_id = course_id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     @Override
     public String toString() {
         return "Register{" +
-                "registration_id=" + registration_id +
-                ", student_id=" + student_id +
-                ", course_id='" + course_id + '\'' +
+                "registration_id=" + registrationId +
+                ", student_id=" + studentId +
+                ", course_id='" + courseId + '\'' +
                 '}';
     }
 }

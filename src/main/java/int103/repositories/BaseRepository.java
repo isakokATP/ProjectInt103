@@ -1,4 +1,4 @@
-package int103.Repository;
+package int103.repositories;
 
 public class BaseRepository {
 

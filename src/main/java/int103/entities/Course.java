@@ -1,35 +1,35 @@
 package int103.entities;
 
 public class Course {
-    private String course_id;
-    private String course_name;
+    private String courseId;
+    private String courseName;
 
-    public Course(String course_id, Course course_name){
-        this.course_id = course_id;
-        this.course_name = course_name.toString();
+    public Course(String courseId, Course courseName){
+        this.courseId = courseId;
+        this.courseName = courseName.toString();
     }
 
     public String getCourse_id() {
-        return course_id;
+        return courseId;
     }
 
-    public void setCourse_id(String course_id) {
-        this.course_id = course_id;
+    public void setCourse_id(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourse_name() {
-        return course_name;
+        return courseName;
     }
 
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
+    public void setCourse_name(String courseName) {
+        this.courseName = courseName;
     }
 
     @Override
     public String toString() {
         return "Course{" +
-                "course_id='" + course_id + '\'' +
-                ", course_name='" + course_name + '\'' +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
                 '}';
     }
 }
