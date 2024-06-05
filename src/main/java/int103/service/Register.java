@@ -20,10 +20,10 @@ public class Register {
         String courseID = scanner.next();
 
         try(Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO registration VALUES (?, ?)")){
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO registration (student_id, course_id) VALUES (?, ?)")){
 
             statement.setLong(1, stdId);
-            statement.setString(1, courseID);
+            statement.setString(2, courseID);
 
             int rowAdded = statement.executeUpdate();
             if (rowAdded > 0){
