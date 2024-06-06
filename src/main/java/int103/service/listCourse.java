@@ -12,6 +12,8 @@ public class listCourse {
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
              Statement statement = connection.createStatement();
              ResultSet courses = statement.executeQuery("SELECT course_id, course_name FROM courses")){
+
+
             while (courses.next()){
                 String course_id = courses.getString("course_id");
                 String course_name = courses.getString("course_name");
