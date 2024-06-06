@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/EditCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Students.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Students.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/BaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/EditCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/EditCourse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

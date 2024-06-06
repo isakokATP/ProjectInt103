@@ -18,7 +18,7 @@ public class Main {
             System.out.println("7.)Register");
             System.out.println("8.)Exit");
 
-            System.out.print("Enter your choice:");
+            System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
 
 
