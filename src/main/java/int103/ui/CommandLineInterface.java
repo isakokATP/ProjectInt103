@@ -66,7 +66,7 @@ public class CommandLineInterface {
 
     private void viewAllStudents() throws CustomException {
         for (Student student : storage.getAllStudents()) {
-            System.out.println(student);
+            System.out.println(student.getId() + ", " + student.getFirstName() + " " + student.getLastName() + ", " + student.getEmail());
         }
     }
 
