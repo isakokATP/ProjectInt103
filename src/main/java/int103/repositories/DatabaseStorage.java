@@ -37,7 +37,7 @@ public class DatabaseStorage implements StorageStrategy {
 
     @Override
     public void addCourse(String courseId, String courseName) throws CustomException {
-        String sql = "INSERT INTO courses (courseId, courseName) VALUES (?, ?)";
+        String sql = "INSERT INTO courses (course_id, course_name) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, courseId);
             stmt.setString(2, courseName);
