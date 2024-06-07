@@ -1,0 +1,275 @@
+Index: src/main/java/int103/Entities/Students.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package int103.Entities;\n\npublic class Students {\n    private long studentId;\n    private String firstName;\n    private String lastName;\n    private String email;\n\n    public Students(long studentId, String firstName, String lastName, String email) {\n        this.studentId = studentId;\n        this.firstName = firstName;\n        this.lastName = lastName;\n        this.email = email;\n    }\n\n    public long getStudentId() {\n        return studentId;\n    }\n\n    public void setStudentId(long studentId) {\n        this.studentId = studentId;\n    }\n\n    public String getFirstName() {\n        return firstName;\n    }\n\n    public void setFirstName(String firstName) {\n        this.firstName = firstName;\n    }\n\n    public String getLastName() {\n        return lastName;\n    }\n\n    public void setLastName(String lastName) {\n        this.lastName = lastName;\n    }\n\n    public String getEmail() {\n        return email;\n    }\n\n    public void setEmail(String email) {\n        this.email = email;\n    }\n\n    @Override\n    public String toString() {\n        return \"Student [studentId=\" + studentId + \", firstName=\" + firstName + \", lastName=\" + lastName + \", email=\" + email + \"]\";\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/int103/Entities/Students.java b/src/main/java/int103/Entities/Students.java
+--- a/src/main/java/int103/Entities/Students.java	(revision 482faab22326516fa8430e3882b51c2df1853ea6)
++++ b/src/main/java/int103/Entities/Students.java	(date 1717584194472)
+@@ -1,40 +1,40 @@
+ package int103.Entities;
+ 
+ public class Students {
+-    private long studentId;
+-    private String firstName;
+-    private String lastName;
++    private Long studentId;
++    private String first_name;
++    private String last_name;
+     private String email;
+ 
+-    public Students(long studentId, String firstName, String lastName, String email) {
++    public Students(Long studentId, String first_name, String last_name, String email) {
+         this.studentId = studentId;
+-        this.firstName = firstName;
+-        this.lastName = lastName;
++        this.first_name = first_name;
++        this.last_name = last_name;
+         this.email = email;
+     }
+ 
+-    public long getStudentId() {
++    public Long getStudentId() {
+         return studentId;
+     }
+ 
+-    public void setStudentId(long studentId) {
++    public void setStudentId(Long studentId) {
+         this.studentId = studentId;
+     }
+ 
+-    public String getFirstName() {
+-        return firstName;
++    public String getFirst_name() {
++        return first_name;
+     }
+ 
+-    public void setFirstName(String firstName) {
+-        this.firstName = firstName;
++    public void setFirst_name(String first_name) {
++        this.first_name = first_name;
+     }
+ 
+-    public String getLastName() {
+-        return lastName;
++    public String getLast_name() {
++        return last_name;
+     }
+ 
+-    public void setLastName(String lastName) {
+-        this.lastName = lastName;
++    public void setLast_name(String last_name) {
++        this.last_name = last_name;
+     }
+ 
+     public String getEmail() {
+@@ -47,7 +47,11 @@
+ 
+     @Override
+     public String toString() {
+-        return "Student [studentId=" + studentId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
++        return "BaseRepository{" +
++                "studentId=" + studentId +
++                ", first_name='" + first_name + '\'' +
++                ", last_name='" + last_name + '\'' +
++                ", email='" + email + '\'' +
++                '}';
+     }
+ }
+-
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"cf135385-7d54-48e4-afc2-d6e399a72219\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/Register.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/listCourse.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/listStudent.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/int103/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/int103/Main.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"repository\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2hJd3JDFimE1YG2vMqM6qclJ8ZJ\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"git-widget-placeholder\": \"add\",\n    \"last_opened_file_path\": \"C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.15\",\n    \"project.structure.side.proportion\": \"0.2\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\ASUS\\IdeaProjects\\ProjectInt103\\src\\main\\java\\int103\\Connector\" />\n      <recent name=\"C:\\Users\\ASUS\\IdeaProjects\\ProjectInt103\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"ProjectInt103\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <module name=\"ProjectInt103\" />\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"cf135385-7d54-48e4-afc2-d6e399a72219\" name=\"Changes\" comment=\"\" />\n      <created>1717315913644</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1717315913644</updated>\n      <workItem from=\"1717315915128\" duration=\"1312000\" />\n      <workItem from=\"1717318122029\" duration=\"1536000\" />\n      <workItem from=\"1717319678339\" duration=\"4525000\" />\n      <workItem from=\"1717326082670\" duration=\"851000\" />\n      <workItem from=\"1717398688642\" duration=\"421000\" />\n      <workItem from=\"1717399240425\" duration=\"1017000\" />\n      <workItem from=\"1717400344063\" duration=\"14000\" />\n      <workItem from=\"1717400462134\" duration=\"4236000\" />\n      <workItem from=\"1717569831658\" duration=\"13627000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 482faab22326516fa8430e3882b51c2df1853ea6)
++++ b/.idea/workspace.xml	(date 1717584210974)
+@@ -5,16 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/listStudent.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Course.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Register.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Entities/Students.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Entities/Students.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -35,6 +28,7 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -43,6 +37,7 @@
+   &quot;associatedIndex&quot;: 5
+ }</component>
+   <component name="ProjectId" id="2hJd3JDFimE1YG2vMqM6qclJ8ZJ" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -52,7 +47,7 @@
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
+-    "git-widget-placeholder": "add",
++    "git-widget-placeholder": "#3 on Chaiy0",
+     "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+Index: src/main/java/int103/Entities/Course.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package int103.Entities;\n\npublic class Course {\n    private String courseId;\n    private String courseName;\n\n    public Course(String courseId, String courseName) {\n        this.courseId = courseId;\n        this.courseName = courseName;\n    }\n\n    public String getCourseId() {\n        return courseId;\n    }\n\n    public void setCourseId(String courseId) {\n        this.courseId = courseId;\n    }\n\n    public String getCourseName() {\n        return courseName;\n    }\n\n    public void setCourseName(String courseName) {\n        this.courseName = courseName;\n    }\n\n    @Override\n    public String toString() {\n        return \"Course [courseId=\" + courseId + \", courseName=\" + courseName + \"]\";\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/int103/Entities/Course.java b/src/main/java/int103/Entities/Course.java
+--- a/src/main/java/int103/Entities/Course.java	(revision 482faab22326516fa8430e3882b51c2df1853ea6)
++++ b/src/main/java/int103/Entities/Course.java	(date 1717584194474)
+@@ -1,33 +1,35 @@
+ package int103.Entities;
+ 
+ public class Course {
+-    private String courseId;
+-    private String courseName;
++    private String course_id;
++    private String course_name;
+ 
+-    public Course(String courseId, String courseName) {
+-        this.courseId = courseId;
+-        this.courseName = courseName;
++    public Course(String course_id, String course_name){
++        this.course_id = course_id;
++        this.course_name = course_name.toString();
+     }
+ 
+-    public String getCourseId() {
+-        return courseId;
++    public String getCourse_id() {
++        return course_id;
+     }
+ 
+-    public void setCourseId(String courseId) {
+-        this.courseId = courseId;
++    public void setCourse_id(String course_id) {
++        this.course_id = course_id;
+     }
+ 
+-    public String getCourseName() {
+-        return courseName;
++    public String getCourse_name() {
++        return course_name;
+     }
+ 
+-    public void setCourseName(String courseName) {
+-        this.courseName = courseName;
++    public void setCourse_name(String course_name) {
++        this.course_name = course_name;
+     }
+ 
+     @Override
+     public String toString() {
+-        return "Course [courseId=" + courseId + ", courseName=" + courseName + "]";
++        return "Course{" +
++                "course_id='" + course_id + '\'' +
++                ", course_name='" + course_name + '\'' +
++                '}';
+     }
+ }
+-
+Index: src/main/java/int103/Entities/Register.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package int103.Entities;\n\npublic class Register {\n    private int registrationId;\n    private String studentId;\n    private String courseId;\n\n    public Register(int registrationId, String studentId, String courseId) {\n        this.registrationId = registrationId;\n        this.studentId = studentId;\n        this.courseId = courseId;\n    }\n\n    public int getRegistrationId() {\n        return registrationId;\n    }\n\n    public void setRegistrationId(int registrationId) {\n        this.registrationId = registrationId;\n    }\n\n    public String getStudentId() {\n        return studentId;\n    }\n\n    public void setStudentId(String studentId) {\n        this.studentId = studentId;\n    }\n\n    public String getCourseId() {\n        return courseId;\n    }\n\n    public void setCourseId(String courseId) {\n        this.courseId = courseId;\n    }\n\n    @Override\n    public String toString() {\n        return \"Registration [registrationId=\" + registrationId + \", studentId=\" + studentId + \", courseId=\" + courseId + \"]\";\n    }\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/int103/Entities/Register.java b/src/main/java/int103/Entities/Register.java
+--- a/src/main/java/int103/Entities/Register.java	(revision 482faab22326516fa8430e3882b51c2df1853ea6)
++++ b/src/main/java/int103/Entities/Register.java	(date 1717584194476)
+@@ -1,43 +1,46 @@
+ package int103.Entities;
+ 
+ public class Register {
+-    private int registrationId;
+-    private String studentId;
+-    private String courseId;
++    private int registration_id;
++    private Long student_id;
++    private String course_id;
+ 
+-    public Register(int registrationId, String studentId, String courseId) {
+-        this.registrationId = registrationId;
+-        this.studentId = studentId;
+-        this.courseId = courseId;
++    public Register(int registration_id, Long student_id, String course_id) {
++        this.registration_id = registration_id;
++        this.student_id = student_id;
++        this.course_id = course_id;
+     }
+ 
+-    public int getRegistrationId() {
+-        return registrationId;
++    public int getRegistration_id() {
++        return registration_id;
+     }
+ 
+-    public void setRegistrationId(int registrationId) {
+-        this.registrationId = registrationId;
++    public void setRegistration_id(int registration_id) {
++        this.registration_id = registration_id;
+     }
+ 
+-    public String getStudentId() {
+-        return studentId;
++    public Long getStudent_id() {
++        return student_id;
+     }
+ 
+-    public void setStudentId(String studentId) {
+-        this.studentId = studentId;
++    public void setStudent_id(Long student_id) {
++        this.student_id = student_id;
+     }
+ 
+-    public String getCourseId() {
+-        return courseId;
++    public String getCourse_id() {
++        return course_id;
+     }
+ 
+-    public void setCourseId(String courseId) {
+-        this.courseId = courseId;
++    public void setCourse_id(String course_id) {
++        this.course_id = course_id;
+     }
+ 
+     @Override
+     public String toString() {
+-        return "Registration [registrationId=" + registrationId + ", studentId=" + studentId + ", courseId=" + courseId + "]";
++        return "Register{" +
++                "registration_id=" + registration_id +
++                ", student_id=" + student_id +
++                ", course_id='" + course_id + '\'' +
++                '}';
+     }
+ }
+-

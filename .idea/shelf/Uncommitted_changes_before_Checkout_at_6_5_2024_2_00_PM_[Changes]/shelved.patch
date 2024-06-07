@@ -1,0 +1,16 @@
+Index: src/main/java/int103/Connector/ConnectionDB.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/int103/Connector/ConnectionDB.java b/src/main/java/int103/connector/ConnectionDB.java
+rename from src/main/java/int103/Connector/ConnectionDB.java
+rename to src/main/java/int103/connector/ConnectionDB.java
+--- a/src/main/java/int103/Connector/ConnectionDB.java	
++++ b/src/main/java/int103/connector/ConnectionDB.java	
+@@ -1,4 +1,4 @@
+-package int103.Connector;
++package int103.connector;
+ 
+ import java.sql.*;
+ 

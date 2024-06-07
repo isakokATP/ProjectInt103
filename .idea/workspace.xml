@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/database/student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/EditCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/EditCourse.java" afterDir="false" />
+>>>>>>> Chaiy0
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="connectDB" />
+        <entry key="$PROJECT_DIR$" value="repository" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +50,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
@@ -66,8 +75,27 @@
     "DatabaseDriversLRU": [
       "mysql"
     ]
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#3 on Chaiy0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> Chaiy0
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103\src\main\java\int103\Connector" />
@@ -104,7 +132,8 @@
       <workItem from="1717398688642" duration="421000" />
       <workItem from="1717399240425" duration="1017000" />
       <workItem from="1717400344063" duration="14000" />
-      <workItem from="1717400462134" duration="3417000" />
+      <workItem from="1717400462134" duration="4236000" />
+      <workItem from="1717569831658" duration="13627000" />
     </task>
     <servers />
   </component>
