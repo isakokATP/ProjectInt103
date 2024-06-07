@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Connector/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Repository/BaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/services/StudentManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -37,17 +38,20 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2hJd3JDFimE1YG2vMqM6qclJ8ZJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "repository",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
+    "git-widget-placeholder": "testKan",
+    "last_opened_file_path": "C:/Users/swift/Dropbox/PC/Downloads/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,7 +60,13 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">

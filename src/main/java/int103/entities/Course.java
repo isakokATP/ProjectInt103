@@ -1,35 +1,29 @@
 package int103.entities;
 
-public class Course {
-    private String courseId;
-    private String courseName;
+import java.io.Serializable;
 
-    public Course(String courseId, Course courseName){
-        this.courseId = courseId;
-        this.courseName = courseName.toString();
+public class Course implements Serializable {
+    private final String id;
+    private final String name;
+
+    public Course(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public String getId() {
+        return id;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
         return "Course{" +
-                "courseId='" + courseId + '\'' +
-                ", courseName='" + courseName + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
