@@ -1,6 +1,6 @@
 package int103.exceptions;
 
-public class CustomException extends RuntimeException {
+public class CustomException extends Exception{
     public CustomException(String message) {
         super(message);
     }
@@ -9,4 +9,3 @@ public class CustomException extends RuntimeException {
         super(message, cause);
     }
 }
-

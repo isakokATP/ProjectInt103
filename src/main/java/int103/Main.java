@@ -1,144 +1,66 @@
 package int103;
-import java.util.Scanner;
 
-import int103.service.*;
+import int103.connector.DatabaseConnector;
+import int103.repositories.database.DatabaseStorage;
+import int103.repositories.file.FileStorage;
+import int103.repositories.StorageStrategy;
+import int103.repositories.memory.InMemoryStorage;
+import int103.services.CourseService;
+import int103.services.RegistrationService;
+import int103.services.StudentService;
+import int103.ui.UIInterface;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-<<<<<<< HEAD
-    public static void displayMenu() {
-        Scanner scanner = new Scanner(System.in);
-        boolean running = true;
-        while (running) {
-            System.out.println("Choose your options: ");
-            System.out.println("1. In memory");
-            System.out.println("2. jar file");
-            System.out.println("3. Database");
-            System.out.print("Enter your option: ");
-            int intValue = scanner.nextInt();
-            System.out.println("You selected option: " + intValue);
-
-            if (intValue == 1) {
-                System.out.println(" ");
-                System.out.print("In memory ");
-                running =false;
-                menuInterface(intValue);
-            } else if (intValue == 2) {
-                System.out.println(" ");
-                System.out.print("jar file ");
-                running =false;
-                menuInterface(intValue);
-            } else if (intValue == 3) {
-                System.out.println(" ");
-                System.out.print("Database ");
-                running =false;
-                menuInterface(intValue);
-            } else {
-                System.out.println(" ");
-                System.out.println("Invalid option.");
-            }
-            System.out.println("You selected option: " + intValue);
-
-        }
-
-        scanner.close();
-=======
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select storage type (memory/file/database): ");
+        String storageType = scanner.nextLine().trim().toLowerCase();
+
+        StorageStrategy storage;
+        DatabaseConnector connector = new DatabaseConnector();
+        Connection connection = null;
+
         try {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("1.)listCourse");
-            System.out.println("2.)listStudent");
-            System.out.println("3.)AddCourse");
-            System.out.println("4.)EditCourse");
-            System.out.println("5.)DeleteCourse");
-            System.out.println("6.)studentInfo");
-            System.out.println("7.)Register");
-            System.out.println("8.)Exit");
-
-            System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-
-
-            switch (choice) {
-                case 1: listCourse.list();
-                break;
-                case 2: listStudent.list();
-                break;
-                case 3: AddCourse.addCourse();
-                break;
-                case 4: EditCourse.Edit();
-                break;
-                case 5: deleteCourse.delete();
-                break;
-                case 6: studentInfo.info();
-                break;
-                case 7: Register.add();
-                break;
-                default:
-                    System.out.println("No such choice");
+            switch (storageType) {
+                case "database":
+                    connection = connector.connect();
+                    storage = new DatabaseStorage(connection);
                     break;
-            }
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
->>>>>>> Chaiy0
-    }
-
-    public static void menuInterface(int option) {
-        System.out.println("Option " + option);
-        System.out.println("Choose your Menu: ");
-        Scanner scanner = new Scanner(System.in);
-        boolean run = true;
-
-        while(run) {
-            System.out.println("1. All Students");
-            System.out.println("2. Students Info");
-            System.out.println("3. All Course");
-            System.out.println("4. Add Course");
-            System.out.println("5. Delete Course");
-            System.out.println("6. Register");
-            System.out.println("7. Exit");
-            System.out.print("Enter your option: ");
-
-            int choice = scanner.nextInt();
-
-            switch (choice) {
-                case 1:
-                    System.out.println("All Students");
+                case "file":
+                    storage = new FileStorage();
                     break;
-                case 2:
-                    System.out.println("Students Info");
-                    break;
-                case 3:
-                    System.out.println("All Course");
-                    break;
-                case 4:
-                    System.out.println("Add Course");
-                    break;
-                case 5:
-                    System.out.println("Delete Course");
-                    break;
-                case 6:
-                    System.out.println("Register");
-                    break;
-                case 7:
-                    System.out.println("See you again BYE!!");
-                    run = false;
+                case "memory":
+                    storage = new InMemoryStorage();
                     break;
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("Invalid storage type. Defaulting to memory.");
+                    storage = new InMemoryStorage();
                     break;
             }
+
+            StudentService studentService = new StudentService(storage);
+            CourseService courseService = new CourseService(storage);
+            RegistrationService registrationService = new RegistrationService(storage);
+
+            UIInterface cli = new UIInterface(studentService, courseService, registrationService);
+            cli.run();
+
+        } catch (SQLException e) {
+            System.out.println("Database connection error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                try {
+                    connector.disconnect();
+                } catch (SQLException e) {
+                    System.out.println("Error closing database connection: " + e.getMessage());
+                }
+            }
         }
-
-        scanner.close();
-
-    }
-
-    public static void main(String[] args) {
-        displayMenu();
     }
 }
-

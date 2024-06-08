@@ -9,8 +9,9 @@ public class DatabaseConnector {
 
     private static Connection connection;
 
-    public Connection connect() throws SQLException {
+    public static Connection connect() throws SQLException, ClassNotFoundException{
         if (connection == null || connection.isClosed()) {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         }
         return connection;
