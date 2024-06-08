@@ -15,10 +15,6 @@ public class Register {
         return registrationId;
     }
 
-    public void setRegistrationId(int registrationId) {
-        this.registrationId = registrationId;
-    }
-
     public Long getStudentId() {
         return studentId;
     }

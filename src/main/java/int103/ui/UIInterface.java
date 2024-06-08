@@ -3,15 +3,14 @@ package int103.ui;
 import int103.entities.Course;
 import int103.entities.Student;
 import int103.exceptions.CustomException;
-import int103.repositories.StorageStrategy;
 
 import java.util.Scanner;
 
-public class CommandLineInterface {
+public class UIInterface {
     private final StorageStrategy storage;
     private final Scanner scanner;
 
-    public CommandLineInterface(StorageStrategy storage) {
+    public UIInterface(StorageStrategy storage) {
         this.storage = storage;
         this.scanner = new Scanner(System.in);
     }

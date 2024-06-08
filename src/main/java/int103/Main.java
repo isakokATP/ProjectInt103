@@ -2,11 +2,7 @@ package int103;
 
 import int103.connector.DatabaseConnector;
 import int103.exceptions.CustomException;
-import int103.repositories.DatabaseStorage;
-import int103.repositories.FileStorage;
-import int103.repositories.InMemoryStorage;
-import int103.repositories.StorageStrategy;
-import int103.ui.CommandLineInterface;
+import int103.ui.UIInterface;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,7 +22,7 @@ public class Main {
             switch (storageType) {
                 case "database":
                     connection = connector.connect();
-                    storage = new DatabaseStorage(connection);
+                    storage = new DatabaseRepository(connection);
                     break;
                 case "file":
                     storage = new FileStorage();
@@ -40,7 +36,7 @@ public class Main {
                     break;
             }
 
-            CommandLineInterface cli = new CommandLineInterface(storage);
+            UIInterface cli = new UIInterface(storage);
             cli.run();
 
         } catch (SQLException e) {
