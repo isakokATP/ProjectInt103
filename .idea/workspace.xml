@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/connector/mysql-connector-j-8.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/RegistrationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/CourseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/RegistrationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/ui/UIInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/listStudent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +62,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "add",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/Connector/mysql-connector-j-8.4.0.jar",
+    "git-widget-placeholder": "Merging mix",
+    "last_opened_file_path": "C:/Users/ASUS/Downloads/testproj",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -94,7 +112,8 @@
       <workItem from="1717399240425" duration="1017000" />
       <workItem from="1717400344063" duration="14000" />
       <workItem from="1717400462134" duration="4236000" />
-      <workItem from="1717569831658" duration="16922000" />
+      <workItem from="1717569831658" duration="17615000" />
+      <workItem from="1717835980241" duration="3370000" />
     </task>
     <servers />
   </component>
