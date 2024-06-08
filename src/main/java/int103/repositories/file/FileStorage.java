@@ -1,8 +1,10 @@
-package int103.repositories;
+package int103.repositories.file;
 
 import int103.entities.Course;
+import int103.entities.Register;
 import int103.entities.Student;
 import int103.exceptions.CustomException;
+import int103.repositories.StorageStrategy;
 
 import java.io.*;
 import java.util.*;
@@ -13,34 +15,11 @@ public class FileStorage implements StorageStrategy {
     private static final String REGISTRATIONS_FILE = "registrations.dat";
 
     private Map<Long, Student> students = new HashMap<>();
-    private Map<String, String> courses = new HashMap<>();
-    private Map<Long, Set<String>> studentCourses = new HashMap<>();
-    private Map<String, Set<Long>> courseStudents = new HashMap<>();
+    private Map<String, Course> courses = new HashMap<>();
+    private List<Register> registrations = new ArrayList<>();
 
     public FileStorage() {
         load();
-    }
-
-    @Override
-    public void addCourse(String courseId, String courseName) throws CustomException {
-        if (courses.containsKey(courseId)) {
-            throw new CustomException("Course ID already exists.");
-        }
-        courses.put(courseId, courseName);
-        save();
-    }
-
-    @Override
-    public void registerStudentForCourse(long studentId, String courseId) throws CustomException {
-        if (!students.containsKey(studentId)) {
-            throw new CustomException("Student not found.");
-        }
-        if (!courses.containsKey(courseId)) {
-            throw new CustomException("Course not found.");
-        }
-        studentCourses.computeIfAbsent(studentId, k -> new HashSet<>()).add(courseId);
-        courseStudents.computeIfAbsent(courseId, k -> new HashSet<>()).add(studentId);
-        save();
     }
 
     @Override
@@ -49,12 +28,30 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
+    public Student getStudentById(long studentId) throws CustomException {
+        return students.get(studentId);
+    }
+
+    @Override
     public List<Course> getAllCourses() throws CustomException {
-        List<Course> courseList = new ArrayList<>();
-        for (Map.Entry<String, String> entry : courses.entrySet()) {
-            courseList.add(new Course(entry.getKey(), entry.getValue()));
-        }
-        return courseList;
+        return new ArrayList<>(courses.values());
+    }
+
+    @Override
+    public Course getCourseById(String courseId) throws CustomException {
+        return courses.get(courseId);
+    }
+
+    @Override
+    public void addCourse(String courseId, String courseName) throws CustomException {
+        courses.put(courseId, new Course(courseId, courseName));
+        save();
+    }
+
+    @Override
+    public void registerStudentForCourse(long studentId, String courseId) throws CustomException {
+        registrations.add(new Register(registrations.size() + 1, studentId, courseId));
+        save();
     }
 
     @Override
@@ -62,20 +59,12 @@ public class FileStorage implements StorageStrategy {
         if (!students.containsKey(studentId)) {
             throw new CustomException("Student not found.");
         }
-        return studentCourses.getOrDefault(studentId, Collections.emptySet()).stream()
-                .map(courseId -> new Course(courseId, courses.get(courseId)))
+        return registrations.stream()
+                .filter(registration -> registration.getStudentId() == studentId)
+                .map( registration -> courses.get(registration.getCourseId()))
                 .toList();
     }
 
-    @Override
-    public List<Student> getStudentsForCourse(String courseId) throws CustomException {
-        if (!courses.containsKey(courseId)) {
-            throw new CustomException("Course not found.");
-        }
-        return courseStudents.getOrDefault(courseId, Collections.emptySet()).stream()
-                .map(students::get)
-                .toList();
-    }
 
     private void save() throws CustomException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(STUDENTS_FILE))) {
@@ -91,8 +80,7 @@ public class FileStorage implements StorageStrategy {
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(REGISTRATIONS_FILE))) {
-            oos.writeObject(studentCourses);
-            oos.writeObject(courseStudents);
+            oos.writeObject(registrations);
         } catch (IOException e) {
             throw new CustomException("Error saving registrations: " + e.getMessage());
         }
@@ -106,14 +94,13 @@ public class FileStorage implements StorageStrategy {
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(COURSES_FILE))) {
-            courses = (Map<String, String>) ois.readObject();
+            courses = (Map<String, Course>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             // File not found or not readable, starting fresh
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(REGISTRATIONS_FILE))) {
-            studentCourses = (Map<Long, Set<String>>) ois.readObject();
-            courseStudents = (Map<String, Set<Long>>) ois.readObject();
+            registrations = (List<Register>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             // File not found or not readable, starting fresh
         }

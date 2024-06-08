@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/CourseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/RegistrationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/StudentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBCourseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBRegistrationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBStudentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileCourseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileRegistrationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileStudentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryCourseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryRegistrationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryStudentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/CourseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/BaseRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/services/RegistrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/services/RegistrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/ui/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/ui/UIInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/FileStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/InMemoryStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/StorageStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/StorageStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBCourseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBRegistrationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DBStudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileCourseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileRegistrationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileStudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryCourseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryRegistrationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryStudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/ui/UIInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/ui/UIInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +63,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "reTestKan",
-    "last_opened_file_path": "C:/Users/swift/Dropbox/PC/Downloads/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar",
+    "last_opened_file_path": "C:/Users/swift/Downloads/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

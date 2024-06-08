@@ -1,8 +1,9 @@
-package int103.repositories;
+package int103.repositories.database;
 
 import int103.entities.Course;
 import int103.entities.Student;
 import int103.exceptions.CustomException;
+import int103.repositories.StorageStrategy;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,15 +37,8 @@ public class DatabaseStorage implements StorageStrategy {
     }
 
     @Override
-    public void addCourse(String courseId, String courseName) throws CustomException {
-        String sql = "INSERT INTO courses (course_id, course_name) VALUES (?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, courseId);
-            stmt.setString(2, courseName);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new CustomException("Error adding course to database", e);
-        }
+    public Student getStudentById(long studentId) throws CustomException {
+        return null;
     }
 
     @Override
@@ -63,6 +57,23 @@ public class DatabaseStorage implements StorageStrategy {
             throw new CustomException("Error retrieving courses from database", e);
         }
         return courses;
+    }
+
+    @Override
+    public Course getCourseById(String courseId) throws CustomException {
+        return null;
+    }
+
+    @Override
+    public void addCourse(String courseId, String courseName) throws CustomException {
+        String sql = "INSERT INTO courses (course_id, course_name) VALUES (?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, courseId);
+            stmt.setString(2, courseName);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new CustomException("Error adding course to database", e);
+        }
     }
 
     @Override
@@ -98,31 +109,6 @@ public class DatabaseStorage implements StorageStrategy {
             throw new CustomException("Error retrieving courses for student from database", e);
         }
         return courses;
-    }
-
-    @Override
-    public List<Student> getStudentsForCourse(String courseId) throws CustomException {
-        List<Student> students = new ArrayList<>();
-        String sql = "SELECT s.student_id, s.first_name, s.last_name, s.email " +
-                "FROM students s " +
-                "JOIN registration r ON s.student_id = r.student_id " +
-                "WHERE r.course_id = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, courseId);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    students.add(new Student(
-                            rs.getInt("student_id"),
-                            rs.getString("first_name"),
-                            rs.getString("last_name"),
-                            rs.getString("email")
-                    ));
-                }
-            }
-        } catch (SQLException e) {
-            throw new CustomException("Error retrieving students for course from database", e);
-        }
-        return students;
     }
 }
 

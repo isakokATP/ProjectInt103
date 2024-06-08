@@ -1,7 +1,13 @@
 package int103;
 
 import int103.connector.DatabaseConnector;
-import int103.exceptions.CustomException;
+import int103.repositories.database.DatabaseStorage;
+import int103.repositories.file.FileStorage;
+import int103.repositories.StorageStrategy;
+import int103.repositories.memory.InMemoryStorage;
+import int103.services.CourseService;
+import int103.services.RegistrationService;
+import int103.services.StudentService;
 import int103.ui.UIInterface;
 
 import java.sql.Connection;
@@ -22,7 +28,7 @@ public class Main {
             switch (storageType) {
                 case "database":
                     connection = connector.connect();
-                    storage = new DatabaseRepository(connection);
+                    storage = new DatabaseStorage(connection);
                     break;
                 case "file":
                     storage = new FileStorage();
@@ -36,12 +42,16 @@ public class Main {
                     break;
             }
 
-            UIInterface cli = new UIInterface(storage);
+            StudentService studentService = new StudentService(storage);
+            CourseService courseService = new CourseService(storage);
+            RegistrationService registrationService = new RegistrationService(storage);
+
+            UIInterface cli = new UIInterface(studentService, courseService, registrationService);
             cli.run();
 
         } catch (SQLException e) {
             System.out.println("Database connection error: " + e.getMessage());
-        } catch (CustomException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
             if (connection != null) {
