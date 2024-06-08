@@ -66,6 +66,9 @@ public class DatabaseStorage implements StorageStrategy {
 
     @Override
     public void addCourse(String courseId, String courseName) throws CustomException {
+        if (courseId == null || courseId.isEmpty() && (courseName == null || courseName.isEmpty())) {
+            throw new CustomException("Course id or name cannot be empty");
+        }
         String sql = "INSERT INTO courses (course_id, course_name) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, courseId);
