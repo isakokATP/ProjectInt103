@@ -111,4 +111,3 @@ public class DatabaseStorage implements StorageStrategy {
         return courses;
     }
 }
-

@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="int103_Project:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/connector/mysql-connector-j-8.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/RegistrationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/CourseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/RegistrationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/services/StudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/ui/UIInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/connector/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/AddCourse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/Register.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/deleteCourse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/listCourse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/listStudent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/service/studentInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/connector/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="repository" />
+        <entry key="$PROJECT_DIR$" value="mix" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,21 +51,23 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging mix",
-    "last_opened_file_path": "C:/Users/ASUS/Downloads/testproj",
+    "git-widget-placeholder": "mixver2",
+    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/connector/mysql-connector-j-8.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103\src\main\java\int103" />
       <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103\src\main\java\int103\Connector" />
       <recent name="C:\Users\ASUS\IdeaProjects\ProjectInt103" />
     </key>
@@ -113,7 +104,7 @@
       <workItem from="1717400344063" duration="14000" />
       <workItem from="1717400462134" duration="4236000" />
       <workItem from="1717569831658" duration="17615000" />
-      <workItem from="1717835980241" duration="3370000" />
+      <workItem from="1717835980241" duration="5480000" />
     </task>
     <servers />
   </component>
