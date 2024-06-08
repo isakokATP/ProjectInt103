@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/int103/entities/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/connector/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/connector/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "mixver2",
-    "last_opened_file_path": "C:/Users/ASUS/IdeaProjects/ProjectInt103/src/main/java/int103/connector/mysql-connector-j-8.4.0.jar",
+    "last_opened_file_path": "C:/Users/ASUS/Downloads/testproj",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,7 +102,7 @@
       <workItem from="1717400344063" duration="14000" />
       <workItem from="1717400462134" duration="4236000" />
       <workItem from="1717569831658" duration="17615000" />
-      <workItem from="1717835980241" duration="5480000" />
+      <workItem from="1717835980241" duration="8332000" />
     </task>
     <servers />
   </component>
