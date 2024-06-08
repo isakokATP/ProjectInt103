@@ -20,14 +20,22 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Login login = new Login();
+        System.out.println("---------- Log in ----------");
         System.out.print("Enter your username: ");
         String username = scanner.nextLine();
         Console console = System.console();
-        String password = new String(console.readPassword("Enter password: "));
+//        String password = new String(console.readPassword("Enter password: "));
+        String password;
+        if (console == null) {
+            // Console is not available (e.g., running in an IDE)
+            System.out.print("Enter password: ");
+            password = scanner.nextLine();
+        } else {
+            // Console is available
+            password = new String(console.readPassword("Enter password: "));
+        }
         if (!login.checkLogin(username, password)) {
-            System.out.println("username or password doesn't correct");
-            System.out.println("");
-            System.out.println("");
+            System.out.println("username or password doesn't correct \\n");
             return;
         }
         System.out.println("Select storage type (memory/file/database): ");
