@@ -20,4 +20,5 @@ public class RegistrationService {
     public List<Course> getCoursesForStudent(long studentId) throws CustomException {
         return registrationRepo.getCoursesForStudent(studentId);
     }
+
 }

@@ -23,6 +23,12 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        students.put(studentId, new Student(studentId, firstName, lastName, email));
+        save();
+    }
+
+    @Override
     public List<Student> getAllStudents() throws CustomException {
         return new ArrayList<>(students.values());
     }
@@ -33,9 +39,46 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
+    public void deleteStudent(Long studentId) throws CustomException {
+        if (!students.containsKey(studentId)){
+            throw new CustomException("Students not found");
+        }
+        students.remove(studentId);
+
+        registrations.removeIf(registration -> registration.getStudentId().equals(studentId));
+        save();
+    }
+
+    @Override
     public List<Course> getAllCourses() throws CustomException {
         return new ArrayList<>(courses.values());
     }
+
+    @Override
+    public void editCourse(String courseId, String courseName) throws CustomException {
+        Course course = courses.get(courseId);
+        if (course == null) {
+            throw new CustomException("Course not found");
+        }
+        course.setName(courseName);
+        save();
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws CustomException {
+        if (!courses.containsKey(courseId)) {
+            throw new CustomException("Course not found");
+        }
+        // Remove the course from the courses map
+        courses.remove(courseId);
+
+        // Also remove registrations related to this course
+        registrations.removeIf(registration -> registration.getCourseId().equals(courseId));
+
+        // Save the updated state to the file
+        save();
+    }
+
 
     @Override
     public Course getCourseById(String courseId) throws CustomException {
@@ -61,9 +104,9 @@ public class FileStorage implements StorageStrategy {
         }
         return registrations.stream()
                 .filter(registration -> registration.getStudentId() == studentId)
-                .map( registration -> courses.get(registration.getCourseId()))
+                .map(registration -> courses.get(registration.getCourseId()))
                 .toList();
-    }
+        }
 
 
     private void save() throws CustomException {

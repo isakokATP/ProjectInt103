@@ -16,5 +16,10 @@ public class StudentService {
     public List<Student> getAllStudents() throws CustomException {
         return studentRepo.getAllStudents();
     }
-
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        studentRepo.addStudent(studentId, firstName, lastName, email);
+    }
+    public void deleteStudent(Long studentId) throws CustomException{
+        studentRepo.deleteStudent(studentId);
+    }
 }

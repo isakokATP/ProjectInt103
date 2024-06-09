@@ -17,6 +17,30 @@ public class DatabaseStorage implements StorageStrategy {
     }
 
     @Override
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        if (studentId <= 0) {
+            throw new CustomException("Student ID must be greater than 0");
+        }
+        if (firstName == null || firstName.isEmpty() && lastName == null || lastName.isEmpty()) {
+            throw new CustomException("Student name cannot be empty or null");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new CustomException("Student email cannot be empty or null");
+        }
+
+        String sql = "INSERT INTO students (student_id, first_name, last_name, email) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, studentId);
+            stmt.setString(2, firstName);
+            stmt.setString(3, lastName);
+            stmt.setString(4, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new CustomException("Error adding student to database", e);
+        }
+    }
+
+    @Override
     public List<Student> getAllStudents() throws CustomException {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM students";
@@ -36,9 +60,25 @@ public class DatabaseStorage implements StorageStrategy {
         return students;
     }
 
+
+
     @Override
     public Student getStudentById(long studentId) throws CustomException {
         return null;
+    }
+
+    @Override
+    public void deleteStudent(Long studentId) throws CustomException {
+        if (studentId == null || studentId.describeConstable().isEmpty()){
+            throw new CustomException("Can't delete");
+        }
+        String sql = "DELETE FROM students WHERE student_id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setLong(1, studentId);
+            stmt.executeUpdate();
+        } catch (SQLException e){
+            throw new CustomException("Something went wrong");
+        }
     }
 
     @Override
@@ -112,5 +152,38 @@ public class DatabaseStorage implements StorageStrategy {
             throw new CustomException("Error retrieving courses for student from database", e);
         }
         return courses;
+    }
+
+    @Override
+    public void editCourse(String courseId, String courseName) throws CustomException{
+        if (courseId == null || courseId.isEmpty()){
+            throw new CustomException("courseId is not null");
+        }
+        String sqlView = "SELECT * FROM courses WHERE course_id = ?";
+        String sql = "UPDATE courses SET course_name = ? WHERE course_id = ?";
+        try(PreparedStatement stmt1 = connection.prepareStatement(sqlView);
+            PreparedStatement stmt2 = connection.prepareStatement(sql)){
+            stmt1.setString(1, courseId);
+
+            stmt2.setString(1, courseName);
+            stmt2.setString(2, courseId);
+            stmt2.executeUpdate();
+        } catch (SQLException e){
+            throw  new CustomException("Error something went wrong.");
+        }
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws CustomException {
+        if (courseId == null || courseId.isEmpty()){
+            throw new CustomException("courseId is not null");
+        }
+        String sql = "DELETE FROM courses WHERE course_id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setString(1, courseId);
+            stmt.executeUpdate();
+        } catch (SQLException e){
+            throw  new CustomException("Error something went wrong");
+        }
     }
 }

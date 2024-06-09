@@ -9,6 +9,10 @@ public interface CourseRepository {
     Course getCourseById(String courseId) throws CustomException;
 
     void addCourse(String courseId, String courseName) throws CustomException;
+
     List<Course> getAllCourses() throws CustomException;
 
+    void editCourse(String courseId, String courseName) throws  CustomException;
+
+    void deleteCourse(String courseId) throws CustomException;
 }
