@@ -8,4 +8,6 @@ import java.util.List;
 public interface RegistrationRepository {
     void registerStudentForCourse(long studentId, String courseId) throws CustomException;
     List<Course> getCoursesForStudent(long studentId) throws CustomException;
+
+    void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException;
 }

@@ -186,4 +186,19 @@ public class DatabaseStorage implements StorageStrategy {
             throw  new CustomException("Error something went wrong");
         }
     }
+
+    @Override
+    public void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException {
+        String sql = "DELETE FROM registration WHERE student_id = ? AND course_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, studentId);
+            stmt.setString(2, courseId);
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new CustomException("No registration found for student with id " + studentId + " and course id " + courseId);
+            }
+        } catch (SQLException e) {
+            throw new CustomException("Error unregistering student from course in database", e);
+        }
+    }
 }
