@@ -23,19 +23,13 @@ public class Main {
         System.out.println("---------- Log in ----------");
         System.out.print("Enter your username: ");
         String username = scanner.nextLine();
-        Console console = System.console();
-//        String password = new String(console.readPassword("Enter password: "));
+
         String password;
-        if (console == null) {
-            // Console is not available (e.g., running in an IDE)
-            System.out.print("Enter password: ");
-            password = scanner.nextLine();
-        } else {
-            // Console is available
-            password = new String(console.readPassword("Enter password: "));
-        }
+        System.out.print("Enter your password: ");
+        password = scanner.nextLine();
+
         if (!login.checkLogin(username, password)) {
-            System.out.println("username or password doesn't correct \\n");
+            System.out.println("username or password doesn't correct \n");
             return;
         }
         System.out.println("Select storage type (memory/file/database): ");

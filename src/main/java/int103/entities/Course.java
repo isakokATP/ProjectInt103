@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Course implements Serializable {
     private final String id;
-    private final String name;
+    private String name;
 
     public Course(String id, String name) {
         this.id = id;
@@ -17,6 +17,10 @@ public class Course implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
