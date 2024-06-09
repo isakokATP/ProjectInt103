@@ -13,7 +13,7 @@ public class Course {
         System.out.print("Enter your courseId : ");
         String addCourse_id = scanner.next();
 
-        System.out.print("Enter your courseName:");
+        System.out.print("Enter your courseName: ");
         String addCourse_name = scanner.next();
 
         try(Connection connection = DriverManager.getConnection(jdbcUrl, username, password);

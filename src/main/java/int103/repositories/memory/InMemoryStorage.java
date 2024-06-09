@@ -26,8 +26,23 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        students.put(studentId, new Student(studentId, firstName, lastName, email));
+    }
+
+    @Override
     public List<Course> getAllCourses() throws CustomException {
         return new ArrayList<>(courses.values());
+    }
+
+    @Override
+    public void editCourse(String courseId) throws CustomException {
+
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws CustomException {
+
     }
 
     @Override

@@ -42,6 +42,30 @@ public class DatabaseStorage implements StorageStrategy {
     }
 
     @Override
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        if (studentId <= 0) {
+            throw new CustomException("Student ID must be greater than 0");
+        }
+        if (firstName == null || firstName.isEmpty() && lastName == null || lastName.isEmpty()) {
+            throw new CustomException("Student name cannot be empty or null");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new CustomException("Student email cannot be empty or null");
+        }
+
+        String sql = "INSERT INTO students (student_id, first_name, last_name, email) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, studentId);
+            stmt.setString(2, firstName);
+            stmt.setString(3, lastName);
+            stmt.setString(4, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new CustomException("Error adding student to database", e);
+        }
+    }
+
+    @Override
     public List<Course> getAllCourses() throws CustomException {
         List<Course> courses = new ArrayList<>();
         String sql = "SELECT * FROM courses";
@@ -76,6 +100,43 @@ public class DatabaseStorage implements StorageStrategy {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new CustomException("Error adding course to database", e);
+        }
+    }
+
+    @Override
+    public void editCourse(String courseId) throws CustomException {
+//        if (courseId == null || courseId.trim().isEmpty()) {
+//            throw new CustomException("Course ID cannot be empty or null");
+//        }
+//
+//        String sql = "UPDATE courses SET course_name = ? WHERE course_id = ?";
+//        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+//            stmt.setString(1, newCourseName);
+//            stmt.setString(2, courseId);
+//            int rowsUpdated = stmt.executeUpdate();
+//            if (rowsUpdated == 0) {
+//                throw new CustomException("Course not found");
+//            }
+//        } catch (SQLException e) {
+//            throw new CustomException("Error editing course in database", e);
+//        }
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws CustomException {
+        if (courseId == null || courseId.trim().isEmpty()) {
+            throw new CustomException("Course ID cannot be empty or null");
+        }
+
+        String sql = "DELETE FROM courses WHERE course_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, courseId);
+            int rowsDeleted = stmt.executeUpdate();
+            if (rowsDeleted == 0) {
+                throw new CustomException("Course not found");
+            }
+        } catch (SQLException e) {
+            throw new CustomException("Error deleting course from database", e);
         }
     }
 

@@ -30,21 +30,24 @@ public class UIInterface {
             try {
                 switch (choice) {
                     case 1:
-                        viewAllStudents();
+                        addStudent();
                         break;
                     case 2:
-                        addCourse();
+                        viewAllStudents();
                         break;
                     case 3:
-                        viewAllCourses();
+                        addCourse();
                         break;
                     case 4:
-                        registerStudentForCourse();
+                        viewAllCourses();
                         break;
                     case 5:
-                        viewCoursesForStudent();
+                        registerStudentForCourse();
                         break;
                     case 6:
+                        viewCoursesForStudent();
+                        break;
+                    case 7:
                         System.out.println("Exiting...");
                         return;
                     default:
@@ -57,13 +60,27 @@ public class UIInterface {
     }
 
     private void printMenu() {
-        System.out.println("1. View All Students");
-        System.out.println("2. Add Course");
-        System.out.println("3. View All Courses");
-        System.out.println("4. Register Student for Course");
-        System.out.println("5. View Courses for Student");
-        System.out.println("6. Exit");
+        System.out.println("1. Add Student");
+        System.out.println("2. View All Students");
+        System.out.println("3. Add Course");
+        System.out.println("4. View All Courses");
+        System.out.println("5. Register Student for Course");
+        System.out.println("6. View Courses for Student");
+        System.out.println("7. Exit");
         System.out.print("Enter your choice: ");
+    }
+
+    private void addStudent() throws CustomException {
+        System.out.print("Enter student ID: ");
+        long studentId = Long.parseLong(scanner.nextLine());
+        System.out.print("Enter student first name: ");
+        String firstname = scanner.nextLine();
+        System.out.print("Enter student last name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter student email: ");
+        String email = scanner.nextLine();
+        studentService.addStudent(studentId, firstname, lastName, email);
+        System.out.println("Student added successfully.");
     }
 
     private void viewAllStudents() throws CustomException {
