@@ -57,6 +57,9 @@ public class UIInterface {
                         viewCoursesForStudent();
                         break;
                     case 10:
+                        unregisterStudentFromCourse();
+                        break;
+                    case 11:
                         System.out.println("Exiting...");
                         return;
                     default:
@@ -70,16 +73,49 @@ public class UIInterface {
 
     private void printMenu() {
         System.out.println("1. Add Student");
-        System.out.println("2. view All Students");
-        System.out.println("3. Delete Student");
+        System.out.println("2. Delete Student");
+        System.out.println("3. View All Students");
         System.out.println("4. Add Course");
         System.out.println("5. Edit Course");
         System.out.println("6. Delete Course");
         System.out.println("7. View All Courses");
-        System.out.println("8. Register student for course");
+        System.out.println("8. Register Student For Course");
         System.out.println("9. View Course For Students");
-        System.out.println("10. Exit");
+        System.out.println("10. Unregister course");
+        System.out.println("11. Exit");
         System.out.print("Enter your choice: ");
+    }
+
+    private void addStudent() throws CustomException {
+        System.out.print("Enter studentID: ");
+        String studentId = scanner.next();
+        if (studentId.length() == 11){
+            try{
+                Long studentCheck = Long.parseLong(studentId);
+                System.out.println("The number is valid" + studentCheck);
+            } catch (NumberFormatException e){
+                System.out.println("the number is not a valid");
+            }
+        } else{
+            System.out.println("The number is too long.");
+            return;
+        }
+        System.out.print("Enter student first name: ");
+        String firstname = scanner.next();
+        System.out.print("Enter student last name: ");
+        String lastName = scanner.next();
+        System.out.print("Enter student email: ");
+        String email = scanner.next();
+        studentService.addStudent(Long.parseLong(studentId), firstname, lastName, email);
+        System.out.println("Student added successfully.");
+    }
+
+    private void deleteStudent() throws CustomException {
+        System.out.print("Enter your studentID for deleted: ");
+        Long studentId = scanner.nextLong();
+
+        studentService.deleteStudent(studentId);
+        System.out.println("your studentID has been deleted.");
     }
 
     private void viewAllStudents() throws CustomException {
@@ -99,6 +135,22 @@ public class UIInterface {
         }
         courseService.addCourse(id, name);
         System.out.println("Course added successfully.");
+    }
+
+    private void editCourse() throws CustomException {
+        System.out.print("Enter courseID for viewEdit :");
+        String id = scanner.nextLine();
+        System.out.print("Enter name for change");
+        String name = scanner.next();
+        courseService.editCourse(id, name);
+    }
+
+    public void deleteCourse() throws CustomException {
+        System.out.print("Enter courseId to deleted: ");
+        String courseId = scanner.next();
+
+        courseService.deleteCourse(courseId);
+        System.out.println("Your Course has been deleted.");
     }
 
     private void viewAllCourses() throws CustomException {
@@ -125,48 +177,15 @@ public class UIInterface {
             System.out.println(course);
         }
     }
-    private void editCourse() throws CustomException {
-        System.out.print("Enter courseID for viewEdit :");
-        String id = scanner.nextLine();
-        System.out.print("Enter name for change");
-        String name = scanner.next();
-        courseService.editCourse(id, name);
-    }
-    private void addStudent() throws CustomException {
-        System.out.print("Enter studentID: ");
-        String studentId = scanner.next();
-        if (studentId.length() == 11){
-            try{
-                Long studentCheck = Long.parseLong(studentId);
-                System.out.println("The number is valid" + studentCheck);
-            } catch (NumberFormatException e){
-                System.out.println("the number is not a valid");
-            }
-        } else{
-            System.out.println("The number is too long.");
-            return;
-        }
-        System.out.print("Enter student first name: ");
-        String firstname = scanner.next();
-        System.out.print("Enter student last name: ");
-        String lastName = scanner.next();
-        System.out.print("Enter student email: ");
-        String email = scanner.next();
-        studentService.addStudent(Long.parseLong(studentId), firstname, lastName, email);
-        System.out.println("Student added successfully.");
-    }
-    private void deleteStudent() throws CustomException {
-        System.out.print("Enter your studentID for deleted: ");
-        Long studentId = scanner.nextLong();
 
-        studentService.deleteStudent(studentId);
-        System.out.println("your studentID has been deleted.");
-    }
-    public void deleteCourse() throws CustomException {
-        System.out.print("Enter courseId to deleted: ");
+    private void unregisterStudentFromCourse() throws CustomException {
+        System.out.print("Enter studentID to deleted: ");
+        String studentId = scanner.next();
+        Long studentCheck = Long.parseLong(studentId);
+        System.out.print("Enter courseID to deleted: ");
         String courseId = scanner.next();
 
-        courseService.deleteCourse(courseId);
+        registrationService.unregisterStudentFromCourse(studentCheck, courseId);
         System.out.println("Your Course has been deleted.");
     }
 }

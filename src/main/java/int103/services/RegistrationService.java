@@ -21,4 +21,9 @@ public class RegistrationService {
         return registrationRepo.getCoursesForStudent(studentId);
     }
 
+    public void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException {
+        registrationRepo.unregisterStudentFromCourse(studentId, courseId);
+    }
+
+
 }

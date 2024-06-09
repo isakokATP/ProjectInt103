@@ -21,16 +21,6 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
-    public List<Student> getAllStudents() throws CustomException {
-        return new ArrayList<>(students.values());
-    }
-
-    @Override
-    public Student getStudentById(long studentId) throws CustomException {
-        return students.get(studentId);
-    }
-
-    @Override
     public void deleteStudent(Long studentId) throws CustomException {
         if (!students.containsKey(studentId)){
             throw new CustomException("Students not found");
@@ -41,8 +31,18 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
-    public List<Course> getAllCourses() throws CustomException {
-        return new ArrayList<>(courses.values());
+    public List<Student> getAllStudents() throws CustomException {
+        return new ArrayList<>(students.values());
+    }
+
+    @Override
+    public Student getStudentById(long studentId) throws CustomException {
+        return students.get(studentId);
+    }
+
+    @Override
+    public void addCourse(String courseId, String courseName) throws CustomException {
+        courses.put(courseId, new Course(courseId, courseName));
     }
 
     @Override
@@ -67,13 +67,13 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
-    public Course getCourseById(String courseId) throws CustomException {
-        return courses.get(courseId);
+    public List<Course> getAllCourses() throws CustomException {
+        return new ArrayList<>(courses.values());
     }
 
     @Override
-    public void addCourse(String courseId, String courseName) throws CustomException {
-        courses.put(courseId, new Course(courseId, courseName));
+    public Course getCourseById(String courseId) throws CustomException {
+        return courses.get(courseId);
     }
 
     @Override
@@ -91,5 +91,23 @@ public class InMemoryStorage implements StorageStrategy {
                 .filter(registration -> registration.getStudentId() == studentId)
                 .map( registration -> courses.get(registration.getCourseId()))
                 .toList();
+    }
+
+    @Override
+    public void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException {
+        if (!students.containsKey(studentId)) {
+            throw new CustomException("Student not found");
+        }
+        if (!courses.containsKey(courseId)) {
+            throw new CustomException("Course not found");
+        }
+
+        boolean removed = registrations.removeIf(registration ->
+                registration.getStudentId() == studentId && registration.getCourseId().equals(courseId)
+        );
+
+        if (!removed) {
+            throw new CustomException("Registration not found for student " + studentId + " in course " + courseId);
+        }
     }
 }
