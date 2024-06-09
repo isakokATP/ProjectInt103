@@ -1,7 +1,8 @@
 package int103.repositories;
 
-import int103.exceptions.CustomException;
+import int103.exceptions.DatabaseException;
+import int103.exceptions.NotFoundException;
 
 public interface StorageStrategy extends StudentRepository, CourseRepository, RegistrationRepository {
-    void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException;
+    void unregisterStudentFromCourse(long studentId, String courseId) throws NotFoundException, DatabaseException;
 }

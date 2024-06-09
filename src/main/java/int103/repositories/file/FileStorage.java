@@ -3,7 +3,8 @@ package int103.repositories.file;
 import int103.entities.Course;
 import int103.entities.Register;
 import int103.entities.Student;
-import int103.exceptions.CustomException;
+//import int103.exceptions.CustomException;
+import int103.exceptions.NotFoundException;
 import int103.repositories.StorageStrategy;
 
 import java.io.*;
@@ -23,15 +24,15 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
-    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws NotFoundException {
         students.put(studentId, new Student(studentId, firstName, lastName, email));
         save();
     }
 
     @Override
-    public void deleteStudent(Long studentId) throws CustomException {
+    public void deleteStudent(Long studentId) throws NotFoundException {
         if (!students.containsKey(studentId)){
-            throw new CustomException("Students not found");
+            throw new NotFoundException("Students not found");
         }
         students.remove(studentId);
 
@@ -40,35 +41,35 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
-    public List<Student> getAllStudents() throws CustomException {
+    public List<Student> getAllStudents() throws NotFoundException {
         return new ArrayList<>(students.values());
     }
 
     @Override
-    public Student getStudentById(long studentId) throws CustomException {
+    public Student getStudentById(long studentId) throws NotFoundException {
         return students.get(studentId);
     }
 
     @Override
-    public void addCourse(String courseId, String courseName) throws CustomException {
+    public void addCourse(String courseId, String courseName) throws NotFoundException {
         courses.put(courseId, new Course(courseId, courseName));
         save();
     }
 
     @Override
-    public void editCourse(String courseId, String courseName) throws CustomException {
+    public void editCourse(String courseId, String courseName) throws NotFoundException {
         Course course = courses.get(courseId);
         if (course == null) {
-            throw new CustomException("Course not found");
+            throw new NotFoundException("Course not found");
         }
         course.setName(courseName);
         save();
     }
 
     @Override
-    public void deleteCourse(String courseId) throws CustomException {
+    public void deleteCourse(String courseId) throws NotFoundException {
         if (!courses.containsKey(courseId)) {
-            throw new CustomException("Course not found");
+            throw new NotFoundException("Course not found");
         }
         // Remove the course from the courses map
         courses.remove(courseId);
@@ -81,25 +82,25 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
-    public List<Course> getAllCourses() throws CustomException {
+    public List<Course> getAllCourses() throws NotFoundException {
         return new ArrayList<>(courses.values());
     }
 
     @Override
-    public Course getCourseById(String courseId) throws CustomException {
+    public Course getCourseById(String courseId) throws NotFoundException {
         return courses.get(courseId);
     }
 
     @Override
-    public void registerStudentForCourse(long studentId, String courseId) throws CustomException {
+    public void registerStudentForCourse(long studentId, String courseId) throws NotFoundException {
         registrations.add(new Register(registrations.size() + 1, studentId, courseId));
         save();
     }
 
     @Override
-    public List<Course> getCoursesForStudent(long studentId) throws CustomException {
+    public List<Course> getCoursesForStudent(long studentId) throws NotFoundException {
         if (!students.containsKey(studentId)) {
-            throw new CustomException("Student not found.");
+            throw new NotFoundException("Student not found.");
         }
         return registrations.stream()
                 .filter(registration -> registration.getStudentId() == studentId)
@@ -108,41 +109,41 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
-    public void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException {
+    public void unregisterStudentFromCourse(long studentId, String courseId) throws NotFoundException {
         if (!students.containsKey(studentId)) {
-            throw new CustomException("Student not found");
+            throw new NotFoundException("Student not found");
         }
         if (!courses.containsKey(courseId)) {
-            throw new CustomException("Course not found");
+            throw new NotFoundException("Course not found");
         }
         // Remove the specific registration for the student in the course
         boolean removed = registrations.removeIf(registration ->
                 registration.getStudentId() == studentId && registration.getCourseId().equals(courseId));
         if (!removed) {
-            throw new CustomException("Registration not found for the given student and course");
+            throw new NotFoundException("Registration not found for the given student and course");
         }
 
         // Save the updated state to the file
         save();
     }
 
-    private void save() throws CustomException {
+    private void save() throws NotFoundException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(STUDENTS_FILE))) {
             oos.writeObject(students);
         } catch (IOException e) {
-            throw new CustomException("Error saving students: " + e.getMessage());
+            throw new NotFoundException("Error saving students: " + e.getMessage());
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(COURSES_FILE))) {
             oos.writeObject(courses);
         } catch (IOException e) {
-            throw new CustomException("Error saving courses: " + e.getMessage());
+            throw new NotFoundException("Error saving courses: " + e.getMessage());
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(REGISTRATIONS_FILE))) {
             oos.writeObject(registrations);
         } catch (IOException e) {
-            throw new CustomException("Error saving registrations: " + e.getMessage());
+            throw new NotFoundException("Error saving registrations: " + e.getMessage());
         }
     }
 
