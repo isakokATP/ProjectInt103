@@ -24,7 +24,6 @@ public class Main {
         System.out.print("Enter your username: ");
         String username = scanner.nextLine();
         Console console = System.console();
-//        String password = new String(console.readPassword("Enter password: "));
         String password;
         if (console == null) {
             // Console is not available (e.g., running in an IDE)

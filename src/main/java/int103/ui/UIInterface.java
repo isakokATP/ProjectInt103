@@ -30,21 +30,33 @@ public class UIInterface {
             try {
                 switch (choice) {
                     case 1:
-                        viewAllStudents();
+                        addStudent();
                         break;
                     case 2:
-                        addCourse();
+                        viewAllStudents();
                         break;
                     case 3:
-                        viewAllCourses();
+                        deleteStudent();
                         break;
                     case 4:
-                        registerStudentForCourse();
+                        addCourse();
                         break;
                     case 5:
-                        viewCoursesForStudent();
+                        editCourse();
                         break;
                     case 6:
+                        deleteCourse();
+                        break;
+                    case 7:
+                        viewAllCourses();
+                        break;
+                    case 8:
+                        registerStudentForCourse();
+                        break;
+                    case 9:
+                        viewCoursesForStudent();
+                        break;
+                    case 10:
                         System.out.println("Exiting...");
                         return;
                     default:
@@ -57,12 +69,16 @@ public class UIInterface {
     }
 
     private void printMenu() {
-        System.out.println("1. View All Students");
-        System.out.println("2. Add Course");
-        System.out.println("3. View All Courses");
-        System.out.println("4. Register Student for Course");
-        System.out.println("5. View Courses for Student");
-        System.out.println("6. Exit");
+        System.out.println("1. Add Student");
+        System.out.println("2. view All Students");
+        System.out.println("3. Delete Student");
+        System.out.println("4. Add Course");
+        System.out.println("5. Edit Course");
+        System.out.println("6. Delete Course");
+        System.out.println("7. View All Courses");
+        System.out.println("8. Register student for course");
+        System.out.println("9. View Course For Students");
+        System.out.println("10. Exit");
         System.out.print("Enter your choice: ");
     }
 
@@ -77,6 +93,10 @@ public class UIInterface {
         String id = scanner.nextLine();
         System.out.print("Enter course name: ");
         String name = scanner.nextLine();
+        if (id.isEmpty() && name.isEmpty()){
+            System.out.println("Your info is not empty.");
+            return;
+        }
         courseService.addCourse(id, name);
         System.out.println("Course added successfully.");
     }
@@ -104,5 +124,49 @@ public class UIInterface {
         for (Course course : registrationService.getCoursesForStudent(studentId)) {
             System.out.println(course);
         }
+    }
+    private void editCourse() throws CustomException {
+        System.out.print("Enter courseID for viewEdit :");
+        String id = scanner.nextLine();
+        System.out.print("Enter name for change");
+        String name = scanner.next();
+        courseService.editCourse(id, name);
+    }
+    private void addStudent() throws CustomException {
+        System.out.print("Enter studentID: ");
+        String studentId = scanner.next();
+        if (studentId.length() == 11){
+            try{
+                Long studentCheck = Long.parseLong(studentId);
+                System.out.println("The number is valid" + studentCheck);
+            } catch (NumberFormatException e){
+                System.out.println("the number is not a valid");
+            }
+        } else{
+            System.out.println("The number is too long.");
+            return;
+        }
+        System.out.print("Enter student first name: ");
+        String firstname = scanner.next();
+        System.out.print("Enter student last name: ");
+        String lastName = scanner.next();
+        System.out.print("Enter student email: ");
+        String email = scanner.next();
+        studentService.addStudent(Long.parseLong(studentId), firstname, lastName, email);
+        System.out.println("Student added successfully.");
+    }
+    private void deleteStudent() throws CustomException {
+        System.out.print("Enter your studentID for deleted: ");
+        Long studentId = scanner.nextLong();
+
+        studentService.deleteStudent(studentId);
+        System.out.println("your studentID has been deleted.");
+    }
+    public void deleteCourse() throws CustomException {
+        System.out.print("Enter courseId to deleted: ");
+        String courseId = scanner.next();
+
+        courseService.deleteCourse(courseId);
+        System.out.println("Your Course has been deleted.");
     }
 }

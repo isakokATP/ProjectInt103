@@ -16,6 +16,11 @@ public class InMemoryStorage implements StorageStrategy {
     private final List<Register> registrations = new ArrayList<>();
 
     @Override
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+        students.put(studentId, new Student(studentId, firstName, lastName, email));
+    }
+
+    @Override
     public List<Student> getAllStudents() throws CustomException {
         return new ArrayList<>(students.values());
     }
@@ -26,8 +31,39 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
+    public void deleteStudent(Long studentId) throws CustomException {
+        if (!students.containsKey(studentId)){
+            throw new CustomException("Students not found");
+        }
+        students.remove(studentId);
+
+        registrations.removeIf(registration -> registration.getStudentId().equals(studentId));
+    }
+
+    @Override
     public List<Course> getAllCourses() throws CustomException {
         return new ArrayList<>(courses.values());
+    }
+
+    @Override
+    public void editCourse(String courseId, String courseName) throws CustomException {
+        Course course = courses.get(courseId);
+        if (course == null) {
+            throw new CustomException("Course not found");
+        }
+        course.setName(courseName);
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws CustomException {
+        if (!courses.containsKey(courseId)) {
+            throw new CustomException("Course not found");
+        }
+        // Remove the course from the courses map
+        courses.remove(courseId);
+
+        // Also remove registrations related to this course
+        registrations.removeIf(registration -> registration.getCourseId().equals(courseId));
     }
 
     @Override
