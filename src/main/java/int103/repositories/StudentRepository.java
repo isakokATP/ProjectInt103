@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface StudentRepository {
     void addStudent(long studentId, String firstName, String lastName, String email) throws InvalidException, DatabaseException;
-    List<Student> getAllStudents() throws InvalidException, DatabaseException;
+    List<Student> getAllStudents() throws NotFoundException, DatabaseException;
     Student getStudentById(long studentId) throws NotFoundException, DatabaseException;
     void deleteStudent(Long studentId) throws NotFoundException, DatabaseException;
 }

@@ -22,7 +22,7 @@ public class StudentService {
     public void deleteStudent(Long studentId) throws NotFoundException, DatabaseException{
         studentRepo.deleteStudent(studentId);
     }
-    public List<Student> getAllStudents() throws NotFoundException, DatabaseException, InvalidException {
+    public List<Student> getAllStudents() throws NotFoundException, DatabaseException {
         return studentRepo.getAllStudents();
     }
 }

@@ -4,6 +4,7 @@ import int103.entities.Course;
 import int103.entities.Register;
 import int103.entities.Student;
 //import int103.exceptions.CustomException;
+import int103.exceptions.InvalidException;
 import int103.exceptions.NotFoundException;
 import int103.repositories.CourseRepository;
 import int103.repositories.StorageStrategy;
@@ -17,7 +18,20 @@ public class InMemoryStorage implements StorageStrategy {
     private final List<Register> registrations = new ArrayList<>();
 
     @Override
-    public void addStudent(long studentId, String firstName, String lastName, String email) throws NumberFormatException {
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws InvalidException {
+        String studentIdStr = String.valueOf(studentId);
+        if (studentIdStr.length() != 11 || !studentIdStr.matches("\\d{11}")) {
+            throw new InvalidException("Student ID must be an 11-digit number");
+        }
+        if (firstName == null || firstName.isEmpty() && lastName == null || lastName.isEmpty()) {
+            throw new InvalidException("Student name cannot be empty or null");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new InvalidException("Student email cannot be empty or null");
+        }
+        if (isStudentIdExist(studentId)) {
+            throw new InvalidException("The student ID already exists in the memory");
+        }
         students.put(studentId, new Student(studentId, firstName, lastName, email));
     }
 
@@ -42,7 +56,13 @@ public class InMemoryStorage implements StorageStrategy {
     }
 
     @Override
-    public void addCourse(String courseId, String courseName) throws NotFoundException {
+    public void addCourse(String courseId, String courseName) throws InvalidException {
+        if (courseId.isEmpty() && courseName == null || courseName.isEmpty()){
+            throw new InvalidException("Course is not null or empty.");
+        }
+        if (isCourseIdExist(courseId)) {
+            throw new InvalidException("The course ID already exists in the memory");
+        }
         courses.put(courseId, new Course(courseId, courseName));
     }
 
@@ -52,6 +72,9 @@ public class InMemoryStorage implements StorageStrategy {
         if (course == null) {
             throw new NotFoundException("Course not found");
         }
+        if (!isCourseIdExist(courseId)) {
+            throw new NotFoundException("No course found with the given course ID.");
+        }
         course.setName(courseName);
     }
 
@@ -60,10 +83,7 @@ public class InMemoryStorage implements StorageStrategy {
         if (!courses.containsKey(courseId)) {
             throw new NotFoundException("Course not found");
         }
-        // Remove the course from the courses map
         courses.remove(courseId);
-
-        // Also remove registrations related to this course
         registrations.removeIf(registration -> registration.getCourseId().equals(courseId));
     }
 
@@ -79,6 +99,13 @@ public class InMemoryStorage implements StorageStrategy {
 
     @Override
     public void registerStudentForCourse(long studentId, String courseId) throws NotFoundException {
+        if (!isStudentIdExist(studentId)) {
+            throw new NotFoundException("Student ID not found");
+        }
+        if (registrations.stream().anyMatch(registration ->
+                registration.getStudentId() == studentId && registration.getCourseId().equals(courseId))) {
+            throw new NotFoundException("Student is already registered for this course");
+        }
         registrations.add(new Register(registrations.size() + 1, studentId, courseId));
     }
 
@@ -110,5 +137,13 @@ public class InMemoryStorage implements StorageStrategy {
         if (!removed) {
             throw new NotFoundException("Registration not found for student " + studentId + " in course " + courseId);
         }
+    }
+
+    private boolean isStudentIdExist(long studentId) {
+        return students.containsKey(studentId);
+    }
+
+    private boolean isCourseIdExist(String courseId) {
+        return courses.containsKey(courseId);
     }
 }

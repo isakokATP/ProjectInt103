@@ -23,11 +23,14 @@ public class Main {
         System.out.println("---------- Log in ----------");
         System.out.print("Enter your username: ");
         String username = scanner.nextLine();
-
+        Console console = System.console();
         String password;
-        System.out.print("Enter your password: ");
-        password = scanner.nextLine();
-
+        if (console == null) {
+            System.out.print("Enter password: ");
+            password = scanner.nextLine();
+        } else {
+            password = new String(console.readPassword("Enter password: "));
+        }
         if (!login.checkLogin(username, password)) {
             System.out.println("username or password doesn't correct \n");
             return;
@@ -52,9 +55,8 @@ public class Main {
                     storage = new InMemoryStorage();
                     break;
                 default:
-                    System.out.println("Invalid storage type. Defaulting to memory.");
-                    storage = new InMemoryStorage();
-                    break;
+                    System.out.println("Invalid storage type. Please choose a storage method.");
+                    return;
             }
 
             StudentService studentService = new StudentService(storage);

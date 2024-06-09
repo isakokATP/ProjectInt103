@@ -2,7 +2,6 @@ package int103.ui;
 
 import int103.entities.Course;
 import int103.entities.Student;
-//import int103.exceptions.CustomException;
 import int103.exceptions.DatabaseException;
 import int103.exceptions.InvalidException;
 import int103.exceptions.NotFoundException;
@@ -29,7 +28,7 @@ public class UIInterface {
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     addStudent();
@@ -88,63 +87,56 @@ public class UIInterface {
     private void addStudent() throws InvalidException {
         try {
             System.out.print("Enter studentID: ");
-            String studentId = scanner.next();
-            if (studentId.length() != 11 || !studentId.matches("\\d{11}")) {
-                System.out.println("The student ID must be exactly 11 digits.");
-                return;
-            }
+            String studentId = scanner.nextLine();
+
             System.out.print("Enter student first name: ");
-            String firstname = scanner.next();
+            String firstName = scanner.nextLine();
+
             System.out.print("Enter student last name: ");
-            String lastName = scanner.next();
+            String lastName = scanner.nextLine();
+
             System.out.print("Enter student email: ");
-            String email = scanner.next();
-            studentService.addStudent(Long.parseLong(studentId), firstname, lastName, email);
+            String email = scanner.nextLine();
+
+            studentService.addStudent(Long.parseLong(studentId), firstName, lastName, email);
             System.out.println("Student added successfully.");
-        }catch (NumberFormatException e) {
-            System.out.println("The student ID is not valid.");
-        }
-        catch (Exception e) {
-            // Catch any other unexpected exceptions
-            System.out.println("An unexpected error occurred: " + e.getMessage());
+        }catch (Exception e) {
+            throw new InvalidException("Error add student: " + e.getMessage());
         }
     }
 
-    private void deleteStudent() throws DatabaseException {
+    private void deleteStudent() throws NotFoundException, DatabaseException {
             System.out.print("Enter your studentID for deleted: ");
             Long studentId = scanner.nextLong();
             studentService.deleteStudent(studentId);
             System.out.println("your studentID has been deleted.");
     }
 
-    private void viewAllStudents() throws InvalidException, DatabaseException {
+    private void viewAllStudents() throws NotFoundException, DatabaseException {
         for (Student student : studentService.getAllStudents()) {
             System.out.println(student.getId() + ", " + student.getFirstName() + " " + student.getLastName() + ", " + student.getEmail());
         }
     }
 
-    private void addCourse() throws DatabaseException {
+    private void addCourse() throws DatabaseException, InvalidException {
         System.out.print("Enter course ID: ");
         String id = scanner.nextLine();
         System.out.print("Enter course name: ");
         String name = scanner.nextLine();
-        if (id.isEmpty() && name.isEmpty()){
-            System.out.println("Your info is not empty.");
-            return;
-        }
         courseService.addCourse(id, name);
         System.out.println("Course added successfully.");
     }
 
-    private void editCourse() throws DatabaseException {
+    private void editCourse() throws NotFoundException, DatabaseException {
         System.out.print("Enter courseID for viewEdit :");
         String id = scanner.nextLine();
         System.out.print("Enter name for change");
         String name = scanner.next();
         courseService.editCourse(id, name);
+        System.out.println("Course edited successfully.");
     }
 
-    public void deleteCourse() throws DatabaseException {
+    public void deleteCourse() throws NotFoundException, DatabaseException {
         System.out.print("Enter courseId to deleted: ");
         String courseId = scanner.next();
 
@@ -158,29 +150,29 @@ public class UIInterface {
         }
     }
 
-    private void registerStudentForCourse() throws DatabaseException {
+    private void registerStudentForCourse() throws NotFoundException, DatabaseException {
         System.out.print("Enter student ID: ");
         long studentId = scanner.nextLong();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
         System.out.print("Enter course ID: ");
         String courseId = scanner.nextLine();
         registrationService.registerStudentForCourse(studentId, courseId);
         System.out.println("Student registered for course successfully.");
     }
 
-    private void viewCoursesForStudent() throws DatabaseException {
+    private void viewCoursesForStudent() throws NotFoundException, DatabaseException {
         System.out.print("Enter student ID: ");
         long studentId = scanner.nextLong();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
         for (Course course : registrationService.getCoursesForStudent(studentId)) {
-            System.out.println(course);
+            System.out.println(course.getId() + " : " + course.getName());
         }
     }
 
-    private void unregisterStudentFromCourse() throws DatabaseException {
+    private void unregisterStudentFromCourse() throws NotFoundException, DatabaseException {
         System.out.print("Enter studentID to deleted: ");
         String studentId = scanner.next();
-        Long studentCheck = Long.parseLong(studentId);
+        long studentCheck = Long.parseLong(studentId);
         System.out.print("Enter courseID to deleted: ");
         String courseId = scanner.next();
 

@@ -3,7 +3,7 @@ package int103.repositories.file;
 import int103.entities.Course;
 import int103.entities.Register;
 import int103.entities.Student;
-//import int103.exceptions.CustomException;
+import int103.exceptions.InvalidException;
 import int103.exceptions.NotFoundException;
 import int103.repositories.StorageStrategy;
 
@@ -23,8 +23,25 @@ public class FileStorage implements StorageStrategy {
         load();
     }
 
+
+    private boolean isStudentIdExist(long studentId) {
+        return students.containsKey(studentId);
+    }
     @Override
-    public void addStudent(long studentId, String firstName, String lastName, String email) throws NotFoundException {
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws InvalidException {
+        String studentIdStr = String.valueOf(studentId);
+        if (studentIdStr.length() != 11 || !studentIdStr.matches("\\d{11}")) {
+            throw new InvalidException("Student ID must be an 11-digit number");
+        }
+        if (firstName == null || firstName.isEmpty() && lastName == null || lastName.isEmpty()) {
+            throw new InvalidException("Student name cannot be empty or null");
+        }
+        if (email == null || email.isEmpty()) {
+            throw new InvalidException("Student email cannot be empty or null");
+        }
+        if (isStudentIdExist(studentId)) {
+            throw new InvalidException("The student ID already exists in the file");
+        }
         students.put(studentId, new Student(studentId, firstName, lastName, email));
         save();
     }
@@ -35,7 +52,6 @@ public class FileStorage implements StorageStrategy {
             throw new NotFoundException("Students not found");
         }
         students.remove(studentId);
-
         registrations.removeIf(registration -> registration.getStudentId().equals(studentId));
         save();
     }
@@ -50,34 +66,19 @@ public class FileStorage implements StorageStrategy {
         return students.get(studentId);
     }
 
+    private boolean isCourseIdExist(String courseId) {
+        return courses.containsKey(courseId);
+    }
+
     @Override
-    public void addCourse(String courseId, String courseName) throws NotFoundException {
+    public void addCourse(String courseId, String courseName) throws InvalidException {
+        if (courseId.isEmpty() && courseName == null || courseName.isEmpty()){
+            throw new InvalidException("Course is not null or empty.");
+        }
+        if (isCourseIdExist(courseId)) {
+            throw new InvalidException("The course ID already exists in the file");
+        }
         courses.put(courseId, new Course(courseId, courseName));
-        save();
-    }
-
-    @Override
-    public void editCourse(String courseId, String courseName) throws NotFoundException {
-        Course course = courses.get(courseId);
-        if (course == null) {
-            throw new NotFoundException("Course not found");
-        }
-        course.setName(courseName);
-        save();
-    }
-
-    @Override
-    public void deleteCourse(String courseId) throws NotFoundException {
-        if (!courses.containsKey(courseId)) {
-            throw new NotFoundException("Course not found");
-        }
-        // Remove the course from the courses map
-        courses.remove(courseId);
-
-        // Also remove registrations related to this course
-        registrations.removeIf(registration -> registration.getCourseId().equals(courseId));
-
-        // Save the updated state to the file
         save();
     }
 
@@ -92,7 +93,37 @@ public class FileStorage implements StorageStrategy {
     }
 
     @Override
+    public void editCourse(String courseId, String courseName) throws NotFoundException {
+        Course course = courses.get(courseId);
+        if (course == null) {
+            throw new NotFoundException("Course not found");
+        }
+        if (!isCourseIdExist(courseId)) {
+            throw new NotFoundException("No course found with the given course ID.");
+        }
+        course.setName(courseName);
+        save();
+    }
+
+    @Override
+    public void deleteCourse(String courseId) throws NotFoundException {
+        if (!courses.containsKey(courseId)) {
+            throw new NotFoundException("Course not found");
+        }
+        courses.remove(courseId);
+        registrations.removeIf(registration -> registration.getCourseId().equals(courseId));
+        save();
+    }
+
+    @Override
     public void registerStudentForCourse(long studentId, String courseId) throws NotFoundException {
+        if (!isStudentIdExist(studentId)) {
+            throw new NotFoundException("Student ID not found");
+        }
+        if (registrations.stream().anyMatch(registration ->
+                registration.getStudentId() == studentId && registration.getCourseId().equals(courseId))) {
+            throw new NotFoundException("Student is already registered for this course");
+        }
         registrations.add(new Register(registrations.size() + 1, studentId, courseId));
         save();
     }
@@ -116,14 +147,11 @@ public class FileStorage implements StorageStrategy {
         if (!courses.containsKey(courseId)) {
             throw new NotFoundException("Course not found");
         }
-        // Remove the specific registration for the student in the course
         boolean removed = registrations.removeIf(registration ->
                 registration.getStudentId() == studentId && registration.getCourseId().equals(courseId));
         if (!removed) {
             throw new NotFoundException("Registration not found for the given student and course");
         }
-
-        // Save the updated state to the file
         save();
     }
 
@@ -150,20 +178,30 @@ public class FileStorage implements StorageStrategy {
     private void load() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(STUDENTS_FILE))) {
             students = (Map<Long, Student>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            students = new HashMap<>();
+            save();
         } catch (IOException | ClassNotFoundException e) {
-            // File not found or not readable, starting fresh
+            throw new NotFoundException("Error loading students: " + e.getMessage());
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(COURSES_FILE))) {
             courses = (Map<String, Course>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            courses = new HashMap<>();
+            save();
         } catch (IOException | ClassNotFoundException e) {
-            // File not found or not readable, starting fresh
+            throw new NotFoundException("Error loading courses: " + e.getMessage());
         }
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(REGISTRATIONS_FILE))) {
             registrations = (List<Register>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            registrations = new ArrayList<>();
+            save();
         } catch (IOException | ClassNotFoundException e) {
-            // File not found or not readable, starting fresh
+            throw new NotFoundException("Error loading registrations: " + e.getMessage());
         }
     }
+
 }

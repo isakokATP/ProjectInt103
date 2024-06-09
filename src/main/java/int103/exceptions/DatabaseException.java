@@ -6,4 +6,8 @@ public class DatabaseException extends SQLException {
     public DatabaseException (String message, SQLException e) {
         super(message + e.getMessage());
     }
+
+    public DatabaseException(String message) {
+        super(message);
+    }
 }

@@ -9,6 +9,5 @@ import java.util.List;
 public interface RegistrationRepository {
     void registerStudentForCourse(long studentId, String courseId) throws NotFoundException, DatabaseException;
     List<Course> getCoursesForStudent(long studentId) throws NotFoundException, DatabaseException;
-
     void unregisterStudentFromCourse(long studentId, String courseId) throws NotFoundException, DatabaseException;
 }
