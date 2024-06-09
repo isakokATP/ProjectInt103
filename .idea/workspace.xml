@@ -10,14 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf135385-7d54-48e4-afc2-d6e399a72219" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/DatabaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/InvalidException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/int103/exceptions/RegistrationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/int103_Project_jar/int103_Project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/int103_Project_jar/int103_Project.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/exceptions/CustomException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/CustomException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/exceptions/DatabaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/DatabaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/exceptions/InvalidException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/exceptions/InvalidException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/CourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/CourseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/RegistrationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/RegistrationRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/StorageStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/StorageStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/StudentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/database/DatabaseStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/file/FileStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/int103/repositories/memory/InMemoryStorage.java" afterDir="false" />
@@ -53,6 +54,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -121,11 +125,22 @@
       <workItem from="1717400462134" duration="4236000" />
       <workItem from="1717569831658" duration="17615000" />
       <workItem from="1717835980241" duration="12414000" />
-      <workItem from="1717919539967" duration="19337000" />
+      <workItem from="1717919539967" duration="29774000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/int103/Main.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

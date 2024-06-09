@@ -2,7 +2,10 @@ package int103.repositories.database;
 
 import int103.entities.Course;
 import int103.entities.Student;
-import int103.exceptions.CustomException;
+//import int103.exceptions.CustomException;
+import int103.exceptions.DatabaseException;
+import int103.exceptions.InvalidException;
+import int103.exceptions.NotFoundException;
 import int103.repositories.StorageStrategy;
 
 import java.sql.*;
@@ -16,16 +19,34 @@ public class DatabaseStorage implements StorageStrategy {
         this.connection = connection;
     }
 
+    public boolean isStudentIdExist(long studentId) throws DatabaseException {
+        String sql = "SELECT COUNT(*) FROM students WHERE student_id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setLong(1, studentId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Error checking student ID in database", e);
+        }
+        return false;
+    }
+
     @Override
-    public void addStudent(long studentId, String firstName, String lastName, String email) throws CustomException {
+    public void addStudent(long studentId, String firstName, String lastName, String email) throws InvalidException, DatabaseException, NotFoundException{
         if (studentId <= 0) {
-            throw new CustomException("Student ID must be greater than 0");
+            throw new InvalidException("Student ID must be greater than 0");
         }
         if (firstName == null || firstName.isEmpty() && lastName == null || lastName.isEmpty()) {
-            throw new CustomException("Student name cannot be empty or null");
+            throw new InvalidException("Student name cannot be empty or null");
         }
         if (email == null || email.isEmpty()) {
-            throw new CustomException("Student email cannot be empty or null");
+            throw new InvalidException("Student email cannot be empty or null");
+        }
+        if (isStudentIdExist(studentId)) {
+            throw new InvalidException("The student ID already exists in the database");
         }
 
         String sql = "INSERT INTO students (student_id, first_name, last_name, email) VALUES (?, ?, ?, ?)";
@@ -36,12 +57,13 @@ public class DatabaseStorage implements StorageStrategy {
             stmt.setString(4, email);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new CustomException("Error adding student to database", e);
+            throw new DatabaseException("Error adding student to database", e);
         }
     }
 
+
     @Override
-    public List<Student> getAllStudents() throws CustomException {
+    public List<Student> getAllStudents() throws InvalidException, DatabaseException, NotFoundException {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT * FROM students";
         try (Statement stmt = connection.createStatement();
@@ -55,34 +77,32 @@ public class DatabaseStorage implements StorageStrategy {
                 ));
             }
         } catch (SQLException e) {
-            throw new CustomException("Error retrieving students from database", e);
+            throw new DatabaseException("Error retrieving students from database", e);
         }
         return students;
     }
 
-
-
     @Override
-    public Student getStudentById(long studentId) throws CustomException {
+    public Student getStudentById(long studentId) throws NotFoundException{
         return null;
     }
 
     @Override
-    public void deleteStudent(Long studentId) throws CustomException {
+    public void deleteStudent(Long studentId) throws NotFoundException, DatabaseException {
         if (studentId == null || studentId.describeConstable().isEmpty()){
-            throw new CustomException("Can't delete");
+            throw new NotFoundException("Can not delete");
         }
         String sql = "DELETE FROM students WHERE student_id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setLong(1, studentId);
             stmt.executeUpdate();
         } catch (SQLException e){
-            throw new CustomException("Something went wrong");
+            throw new DatabaseException("Something went wrong", e);
         }
     }
 
     @Override
-    public List<Course> getAllCourses() throws CustomException {
+    public List<Course> getAllCourses() throws NotFoundException, DatabaseException {
         List<Course> courses = new ArrayList<>();
         String sql = "SELECT * FROM courses";
         try (Statement stmt = connection.createStatement();
@@ -94,20 +114,20 @@ public class DatabaseStorage implements StorageStrategy {
                 ));
             }
         } catch (SQLException e) {
-            throw new CustomException("Error retrieving courses from database", e);
+            throw new DatabaseException("Error retrieving courses from database", e);
         }
         return courses;
     }
 
     @Override
-    public Course getCourseById(String courseId) throws CustomException {
+    public Course getCourseById(String courseId) throws NotFoundException {
         return null;
     }
 
     @Override
-    public void addCourse(String courseId, String courseName) throws CustomException {
+    public void addCourse(String courseId, String courseName) throws NotFoundException, DatabaseException{
         if (courseId == null || courseId.isEmpty() && (courseName == null || courseName.isEmpty())) {
-            throw new CustomException("Course id or name cannot be empty");
+            throw new NotFoundException("Course id or name cannot be empty");
         }
         String sql = "INSERT INTO courses (course_id, course_name) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -115,24 +135,24 @@ public class DatabaseStorage implements StorageStrategy {
             stmt.setString(2, courseName);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new CustomException("Error adding course to database", e);
+            throw new DatabaseException("Error adding course to database", e);
         }
     }
 
     @Override
-    public void registerStudentForCourse(long studentId, String courseId) throws CustomException {
+    public void registerStudentForCourse(long studentId, String courseId) throws NotFoundException, DatabaseException {
         String sql = "INSERT INTO registration (student_id, course_id) VALUES (?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, studentId);
             stmt.setString(2, courseId);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new CustomException("Error registering student for course in database", e);
+            throw new DatabaseException("Error registering student for course in database", e);
         }
     }
 
     @Override
-    public List<Course> getCoursesForStudent(long studentId) throws CustomException {
+    public List<Course> getCoursesForStudent(long studentId) throws NotFoundException,DatabaseException {
         List<Course> courses = new ArrayList<>();
         String sql = "SELECT c.course_id, c.course_name " +
                 "FROM courses c " +
@@ -144,20 +164,19 @@ public class DatabaseStorage implements StorageStrategy {
                 while (rs.next()) {
                     courses.add(new Course(
                             rs.getString("course_id"),
-                            rs.getString("course_name")
-                    ));
+                            rs.getString("course_name")));
                 }
             }
         } catch (SQLException e) {
-            throw new CustomException("Error retrieving courses for student from database", e);
+            throw new DatabaseException("Error retrieving courses for student from database", e);
         }
         return courses;
     }
 
     @Override
-    public void editCourse(String courseId, String courseName) throws CustomException{
+    public void editCourse(String courseId, String courseName) throws NotFoundException, DatabaseException{
         if (courseId == null || courseId.isEmpty()){
-            throw new CustomException("courseId is not null");
+            throw new NotFoundException("courseId is not null");
         }
         String sqlView = "SELECT * FROM courses WHERE course_id = ?";
         String sql = "UPDATE courses SET course_name = ? WHERE course_id = ?";
@@ -169,36 +188,36 @@ public class DatabaseStorage implements StorageStrategy {
             stmt2.setString(2, courseId);
             stmt2.executeUpdate();
         } catch (SQLException e){
-            throw  new CustomException("Error something went wrong.");
+            throw new DatabaseException("Error something went wrong.", e);
         }
     }
 
     @Override
-    public void deleteCourse(String courseId) throws CustomException {
+    public void deleteCourse(String courseId) throws NotFoundException, DatabaseException {
         if (courseId == null || courseId.isEmpty()){
-            throw new CustomException("courseId is not null");
+            throw new NotFoundException("courseId is not null");
         }
         String sql = "DELETE FROM courses WHERE course_id = ?";
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
             stmt.setString(1, courseId);
             stmt.executeUpdate();
         } catch (SQLException e){
-            throw  new CustomException("Error something went wrong");
+            throw new DatabaseException("Error something went wrong", e);
         }
     }
 
     @Override
-    public void unregisterStudentFromCourse(long studentId, String courseId) throws CustomException {
+    public void unregisterStudentFromCourse(long studentId, String courseId) throws NotFoundException, DatabaseException{
         String sql = "DELETE FROM registration WHERE student_id = ? AND course_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setLong(1, studentId);
             stmt.setString(2, courseId);
             int affectedRows = stmt.executeUpdate();
             if (affectedRows == 0) {
-                throw new CustomException("No registration found for student with id " + studentId + " and course id " + courseId);
+                throw new NotFoundException("No registration found for student with id " + studentId + " and course id " + courseId);
             }
         } catch (SQLException e) {
-            throw new CustomException("Error unregistering student from course in database", e);
+            throw new DatabaseException("Error unregistering student from course in database", e);
         }
     }
 }
